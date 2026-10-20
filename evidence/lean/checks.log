@@ -1,0 +1,24 @@
+⚠ [18132/18151] Replayed EggeMansour.Interfaces
+warning: EggeMansour/Interfaces.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [18133/18151] Ran EggeMansour.Interfaces:irArts
+warning: EggeMansour/Interfaces.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+ℹ [18138/18151] Replayed EggeMansour.CombinatoricsChecks
+info: EggeMansour/CombinatoricsChecks.lean:25:0: [(0, [1]), (1, [1]), (2, [1, 1]), (3, [1, 3]), (4, [1, 6, 2]), (5, [1, 10, 10])]
+info: EggeMansour/CombinatoricsChecks.lean:28:0: [(0, [1]), (1, [1]), (2, [0, 1]), (3, [0, 1]), (4, [0, 0, 1]), (5, [0, 0, 1])]
+info: EggeMansour/CombinatoricsChecks.lean:31:0: [(0, [1]), (1, [1]), (2, [1, 0]), (3, [1, 0]), (4, [1, 0, 0]), (5, [1, 0, 0])]
+info: EggeMansour/CombinatoricsChecks.lean:34:0: 'EggeMansour.Combinatorics.coeff_coeff_avoiderSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:35:0: 'EggeMansour.Combinatorics.twoCycles_directSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:36:0: 'EggeMansour.Combinatorics.two_mul_twoCycles' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:37:0: 'EggeMansour.Combinatorics.twoCycles_le_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:38:0: 'EggeMansour.Combinatorics.contains_singleton_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:39:0: 'EggeMansour.Combinatorics.directSum_not_isIndecomposable' depends on axioms: [propext, Quot.sound]
+ℹ [18142/18151] Replayed EggeMansour.WrapChecks
+info: EggeMansour/WrapChecks.lean:9:0: 'EggeMansour.Combinatorics.wrap_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:10:0: 'EggeMansour.Combinatorics.wrap_last' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:11:0: 'EggeMansour.Combinatorics.wrap_interior' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:12:0: 'EggeMansour.Combinatorics.isInvolution_wrap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:13:0: 'EggeMansour.Combinatorics.wrap_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:14:0: 'EggeMansour.Combinatorics.contains_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:15:0: 'EggeMansour.Combinatorics.twoCycles_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:16:0: 'EggeMansour.Combinatorics.isIndecomposable_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (18151 jobs).

@@ -1,0 +1,314 @@
+{
+  "status": "PASS",
+  "max_k": 4,
+  "arithmetic": "exact rational functions over Z[q,s,c0,...] with FLINT polynomial gcd normalization",
+  "flint_version": "0.9.0",
+  "workers": 16,
+  "seconds": 0.10415896802442148,
+  "script_sha256": "5b02c22a62aa88451f01639e03d77b1b9d71ae24abf56c9372f6a6ab390106e3",
+  "results": [
+    {
+      "kind": "identities",
+      "k": 1,
+      "seconds": 0.026196988008450717,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": false,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 1,
+      "full_denominator_terms": 1
+    },
+    {
+      "kind": "identities",
+      "k": 2,
+      "seconds": 0.031055831001140177,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": false,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 3,
+      "full_denominator_terms": 2
+    },
+    {
+      "kind": "identities",
+      "k": 3,
+      "seconds": 0.038005531998351216,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": true,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 12,
+      "full_denominator_terms": 8
+    },
+    {
+      "kind": "identities",
+      "k": 4,
+      "seconds": 0.07933474000310525,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": true,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "factors": []
+        },
+        {
+          "i": 2,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 3,
+          "j": 3,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 88,
+      "full_denominator_terms": 54
+    },
+    {
+      "kind": "permutations",
+      "k": 1,
+      "chunk": 0,
+      "orders": 1,
+      "seconds": 0.00042796600610017776
+    },
+    {
+      "kind": "permutations",
+      "k": 2,
+      "chunk": 0,
+      "orders": 2,
+      "seconds": 0.02449994598282501
+    },
+    {
+      "kind": "permutations",
+      "k": 3,
+      "chunk": 0,
+      "orders": 6,
+      "seconds": 0.027310245961416513
+    },
+    {
+      "kind": "permutations",
+      "k": 4,
+      "chunk": 0,
+      "orders": 24,
+      "seconds": 0.058790914015844464
+    }
+  ],
+  "gpu_assessment": "native exact multivariate polynomial gcd/factorization; independent CPU tasks; no floating point and no GPU"
+}

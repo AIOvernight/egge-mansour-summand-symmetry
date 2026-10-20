@@ -1,0 +1,84 @@
+literal {'n': 0, 'all_involutions': 1, 'avoid_3412': 1}
+literal {'n': 1, 'all_involutions': 1, 'avoid_3412': 1}
+literal {'n': 2, 'all_involutions': 2, 'avoid_3412': 2}
+literal {'n': 3, 'all_involutions': 4, 'avoid_3412': 4}
+literal {'n': 4, 'all_involutions': 10, 'avoid_3412': 9}
+literal {'n': 5, 'all_involutions': 26, 'avoid_3412': 21}
+literal {'n': 6, 'all_involutions': 76, 'avoid_3412': 51}
+literal {'n': 7, 'all_involutions': 232, 'avoid_3412': 127}
+literal {'n': 8, 'all_involutions': 764, 'avoid_3412': 323}
+literal {'n': 9, 'all_involutions': 2620, 'avoid_3412': 835}
+literal {'n': 10, 'all_involutions': 9496, 'avoid_3412': 2188}
+{
+  "method": "all involutions + literal subsequence patterns vs source eq.(2)",
+  "gpu_assessment": "irregular exhaustive generation and tiny exact case; CPU parallelism avoids GPU setup and preserves oracle independence",
+  "n_max": 10,
+  "pattern_weight_max": 7,
+  "patterns": 127,
+  "cells": 4572,
+  "totals": [
+    {
+      "n": 0,
+      "all_involutions": 1,
+      "avoid_3412": 1
+    },
+    {
+      "n": 1,
+      "all_involutions": 1,
+      "avoid_3412": 1
+    },
+    {
+      "n": 2,
+      "all_involutions": 2,
+      "avoid_3412": 2
+    },
+    {
+      "n": 3,
+      "all_involutions": 4,
+      "avoid_3412": 4
+    },
+    {
+      "n": 4,
+      "all_involutions": 10,
+      "avoid_3412": 9
+    },
+    {
+      "n": 5,
+      "all_involutions": 26,
+      "avoid_3412": 21
+    },
+    {
+      "n": 6,
+      "all_involutions": 76,
+      "avoid_3412": 51
+    },
+    {
+      "n": 7,
+      "all_involutions": 232,
+      "avoid_3412": 127
+    },
+    {
+      "n": 8,
+      "all_involutions": 764,
+      "avoid_3412": 323
+    },
+    {
+      "n": 9,
+      "all_involutions": 2620,
+      "avoid_3412": 835
+    },
+    {
+      "n": 10,
+      "all_involutions": 9496,
+      "avoid_3412": 2188
+    }
+  ],
+  "mismatches": [],
+  "symmetry_mismatches": [],
+  "mutation_controls": {
+    "erase_outer_pair_weight_detected": true,
+    "treat_initial_singleton_as_nonsingleton_detected": true
+  },
+  "elapsed_seconds": 2.0597009250195697,
+  "script_sha256": "a42ce0a4b8271ebe8e3019e66a09c84ed5ae10df3bc8ab3e750c56991c8cf46c"
+}

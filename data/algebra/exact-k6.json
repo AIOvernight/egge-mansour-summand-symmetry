@@ -1,0 +1,1203 @@
+{
+  "status": "PASS",
+  "max_k": 6,
+  "arithmetic": "exact rational functions over Z[q,s,c0,...] with FLINT polynomial gcd normalization",
+  "flint_version": "0.9.0",
+  "workers": 16,
+  "seconds": 142.01194117200794,
+  "script_sha256": "9c54bed53a5a054954dd5c97958152ad6dff96dc600eb002f35a6338eeb49663",
+  "results": [
+    {
+      "kind": "identities",
+      "k": 1,
+      "seconds": 0.001146289985626936,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": false,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 1,
+      "full_denominator_terms": 1
+    },
+    {
+      "kind": "identities",
+      "k": 2,
+      "seconds": 0.0044928520219400525,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": false,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 3,
+      "full_denominator_terms": 2
+    },
+    {
+      "kind": "identities",
+      "k": 3,
+      "seconds": 0.01782750798156485,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": true,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 12,
+      "full_denominator_terms": 8
+    },
+    {
+      "kind": "identities",
+      "k": 4,
+      "seconds": 0.09365284902742133,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": true,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "factors": []
+        },
+        {
+          "i": 2,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 3,
+          "j": 3,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 88,
+      "full_denominator_terms": 54
+    },
+    {
+      "kind": "identities",
+      "k": 5,
+      "seconds": 1.4279778430354781,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": false,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c4 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c4 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c4 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "factors": []
+        },
+        {
+          "i": 2,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 3,
+          "j": 3,
+          "factors": []
+        },
+        {
+          "i": 3,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 4,
+          "j": 4,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 1023,
+      "full_denominator_terms": 533
+    },
+    {
+      "kind": "identities",
+      "k": 6,
+      "seconds": 85.98473033402115,
+      "checks": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments_t<k",
+        "moment_t=k_fails",
+        "allowed_denominators"
+      ],
+      "repeated_c1_c0": false,
+      "denominators": [
+        {
+          "i": 0,
+          "j": 0,
+          "factors": []
+        },
+        {
+          "i": 0,
+          "j": 1,
+          "factors": [
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c4 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c4 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 0,
+          "j": 5,
+          "factors": [
+            [
+              "q*c4*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c5 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c5 - 1",
+              1
+            ],
+            [
+              "q*c1*c4 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c5 - 1",
+              1
+            ],
+            [
+              "q*c0*c4 - 1",
+              1
+            ],
+            [
+              "q*c0*c3 - 1",
+              1
+            ],
+            [
+              "q*c0*c2 - 1",
+              1
+            ],
+            [
+              "q*c0*c1 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 1,
+          "factors": []
+        },
+        {
+          "i": 1,
+          "j": 2,
+          "factors": [
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c4 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 1,
+          "j": 5,
+          "factors": [
+            [
+              "q*c4*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c5 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c5 - 1",
+              1
+            ],
+            [
+              "q*c1*c4 - 1",
+              1
+            ],
+            [
+              "q*c1*c3 - 1",
+              1
+            ],
+            [
+              "q*c1*c2 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 2,
+          "factors": []
+        },
+        {
+          "i": 2,
+          "j": 3,
+          "factors": [
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 2,
+          "j": 5,
+          "factors": [
+            [
+              "q*c4*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c5 - 1",
+              1
+            ],
+            [
+              "q*c2*c4 - 1",
+              1
+            ],
+            [
+              "q*c2*c3 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 3,
+          "j": 3,
+          "factors": []
+        },
+        {
+          "i": 3,
+          "j": 4,
+          "factors": [
+            [
+              "q*c3*c4 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 3,
+          "j": 5,
+          "factors": [
+            [
+              "q*c4*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c5 - 1",
+              1
+            ],
+            [
+              "q*c3*c4 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 4,
+          "j": 4,
+          "factors": []
+        },
+        {
+          "i": 4,
+          "j": 5,
+          "factors": [
+            [
+              "q*c4*c5 - 1",
+              1
+            ]
+          ]
+        },
+        {
+          "i": 5,
+          "j": 5,
+          "factors": []
+        }
+      ],
+      "full_numerator_terms": 16083,
+      "full_denominator_terms": 6944
+    },
+    {
+      "kind": "permutations",
+      "k": 1,
+      "chunk": 0,
+      "orders": 1,
+      "seconds": 0.0005448539741337299
+    },
+    {
+      "kind": "permutations",
+      "k": 2,
+      "chunk": 0,
+      "orders": 2,
+      "seconds": 0.0007364429766312242
+    },
+    {
+      "kind": "permutations",
+      "k": 3,
+      "chunk": 0,
+      "orders": 6,
+      "seconds": 0.0031630389858037233
+    },
+    {
+      "kind": "permutations",
+      "k": 4,
+      "chunk": 0,
+      "orders": 24,
+      "seconds": 0.05911000003106892
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 0,
+      "orders": 8,
+      "seconds": 0.28304370801197365
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 1,
+      "orders": 8,
+      "seconds": 0.258384283981286
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 2,
+      "orders": 8,
+      "seconds": 0.3186893849633634
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 3,
+      "orders": 8,
+      "seconds": 0.26162016903981566
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 4,
+      "orders": 8,
+      "seconds": 0.2603089630138129
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 5,
+      "orders": 8,
+      "seconds": 0.3336779089877382
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 6,
+      "orders": 8,
+      "seconds": 0.26347893400816247
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 7,
+      "orders": 8,
+      "seconds": 0.2649835590273142
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 8,
+      "orders": 7,
+      "seconds": 0.23105744598433375
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 9,
+      "orders": 7,
+      "seconds": 0.35288615396711975
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 10,
+      "orders": 7,
+      "seconds": 0.29013207100797445
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 11,
+      "orders": 7,
+      "seconds": 0.32803427102044225
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 12,
+      "orders": 7,
+      "seconds": 0.24075854796683416
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 13,
+      "orders": 7,
+      "seconds": 0.23498883104184642
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 14,
+      "orders": 7,
+      "seconds": 0.2308974599582143
+    },
+    {
+      "kind": "permutations",
+      "k": 5,
+      "chunk": 15,
+      "orders": 7,
+      "seconds": 0.2293502379907295
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 0,
+      "orders": 45,
+      "seconds": 98.48023545596516
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 1,
+      "orders": 45,
+      "seconds": 95.50309862894937
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 2,
+      "orders": 45,
+      "seconds": 97.69853225699626
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 3,
+      "orders": 45,
+      "seconds": 96.01324241998373
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 4,
+      "orders": 45,
+      "seconds": 96.52620452799601
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 5,
+      "orders": 45,
+      "seconds": 97.6165407759836
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 6,
+      "orders": 45,
+      "seconds": 95.64491951698437
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 7,
+      "orders": 45,
+      "seconds": 97.15393253799994
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 8,
+      "orders": 45,
+      "seconds": 98.52560557302786
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 9,
+      "orders": 45,
+      "seconds": 94.31851229799213
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 10,
+      "orders": 45,
+      "seconds": 98.98384648299543
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 11,
+      "orders": 45,
+      "seconds": 97.16606783895986
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 12,
+      "orders": 45,
+      "seconds": 99.72700646496378
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 13,
+      "orders": 45,
+      "seconds": 97.86965168395545
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 14,
+      "orders": 45,
+      "seconds": 96.75459396996303
+    },
+    {
+      "kind": "permutations",
+      "k": 6,
+      "chunk": 15,
+      "orders": 45,
+      "seconds": 55.890869900002144
+    }
+  ],
+  "gpu_assessment": "native exact multivariate polynomial gcd/factorization; independent CPU tasks; no floating point and no GPU"
+}

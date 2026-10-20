@@ -1,0 +1,113 @@
+{
+  "setup": {
+    "seconds": 30.636623699974734,
+    "exit_code": 0,
+    "scope": "Local attachment and validation of matching prebuilt dependencies; no download or dependency rebuild."
+  },
+  "build": {
+    "seconds": 53.51492674596375,
+    "exit_code": 0,
+    "command": [
+      "lake",
+      "build",
+      "EggeMansour.Audit",
+      "EggeMansour.AvoiderPartition",
+      "EggeMansour.Bidiagonal",
+      "EggeMansour.Canonical",
+      "EggeMansour.CellSeries",
+      "EggeMansour.Centralizer",
+      "EggeMansour.CombinatorialBridge",
+      "EggeMansour.CombinatorialMain",
+      "EggeMansour.CombinatorialTarget",
+      "EggeMansour.Combinatorics",
+      "EggeMansour.CombinatoricsChecks",
+      "EggeMansour.CombinatoricsCounts",
+      "EggeMansour.ConstructorSeries",
+      "EggeMansour.ContainmentCut",
+      "EggeMansour.Corollaries",
+      "EggeMansour.DirectSumContainment",
+      "EggeMansour.FromDefinitions",
+      "EggeMansour.Generic",
+      "EggeMansour.GenericRecurrence",
+      "EggeMansour.Guibert",
+      "EggeMansour.GuibertBijection",
+      "EggeMansour.GuibertPair",
+      "EggeMansour.Interfaces",
+      "EggeMansour.IntervalRecurrence",
+      "EggeMansour.ListContainment",
+      "EggeMansour.Localization",
+      "EggeMansour.Main",
+      "EggeMansour.MatrixAdapter",
+      "EggeMansour.PatternSums",
+      "EggeMansour.PermutationCast",
+      "EggeMansour.PrefixCells",
+      "EggeMansour.Recurrence",
+      "EggeMansour.Reduction",
+      "EggeMansour.ReductionChecks",
+      "EggeMansour.ReductionSeries",
+      "EggeMansour.Specialization",
+      "EggeMansour.WeightedSeries",
+      "EggeMansour.Wrap",
+      "EggeMansour.WrapChecks",
+      "EggeMansour.WrapContainment",
+      "EggeMansour.WrappedSeries",
+      "EggeMansour"
+    ],
+    "working_directory": "lean"
+  },
+  "axioms": {
+    "seconds": 3.635096969024744,
+    "exit_code": 0,
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "../results/final-lean-audit/Audit.lean"
+    ],
+    "working_directory": "lean"
+  },
+  "selftest": {
+    "seconds": 0.031154313997831196,
+    "exit_code": 0,
+    "command": [
+      "python3",
+      "src/verification/audit_lean.py",
+      "--selftest"
+    ],
+    "working_directory": "."
+  },
+  "default_axioms": {
+    "seconds": 3.7075189640163444,
+    "exit_code": 0,
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "EggeMansour/Audit.lean"
+    ],
+    "working_directory": "lean"
+  },
+  "expanded_types": {
+    "seconds": 3.6824930569855496,
+    "exit_code": 0,
+    "command": [
+      "lake",
+      "env",
+      "lean",
+      "../results/final-lean-audit/ExpandedAudit.lean"
+    ],
+    "working_directory": "lean"
+  },
+  "checks_replay": {
+    "seconds": 4.2955894890474156,
+    "exit_code": 0,
+    "command": [
+      "lake",
+      "build",
+      "EggeMansour.CombinatoricsChecks",
+      "EggeMansour.WrapChecks",
+      "EggeMansour.ReductionChecks"
+    ],
+    "working_directory": "lean"
+  }
+}

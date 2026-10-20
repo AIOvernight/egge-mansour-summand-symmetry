@@ -1,0 +1,22 @@
+# Status
+
+**Theorem — proved, and machine-checked in Lean 4 from the definitions.**
+
+Release 2.0.0. Last updated 2026-10-20.
+
+The title of this repository describes the mathematical result. It does not claim confirmed priority, peer review, or acceptance by any journal.
+
+| Item | Status |
+|---|---|
+| Result type | Proof in a manuscript ([`paper/manuscript.pdf`](../paper/manuscript.pdf), version 4, 2026-10-19) of the theorem: for indecomposable τ₁, …, τ_k, F_{τ₁⊕⋯⊕τ_k}(x, y) is invariant under permutations of the summands in ℤ[y][[x]]. The theorem is formally verified in Lean 4 / Mathlib from the combinatorial definitions ([`docs/FORMALIZATION.md`](FORMALIZATION.md)). |
+| Formally verified | Permutations of {0, …, n−1}, pattern containment and avoidance, involutions, the number of two-cycles, direct and skew sums, indecomposability and the coefficient-defined series are defined in Lean. From these definitions alone, the formal theorems `patternSeries_reorder` and `avoiderCount_reorder` (arbitrary nonempty indecomposable summands, any number of them, any reordering, repeated summands and summands equal to 1 allowed) and `layeredSeries_reorder`, `layeredCount_reorder` (Conjecture 3.14 as a series identity and as equality of the counts by length and number of two-cycles) are proved, through Guibert's decomposition, the containment lemmas, the Egge–Mansour weighted recurrence (`combinatorialWeightedRecurrence`, and `reducedWeightedRecurrence` with the literal reduced-pattern parameter) and the algebraic recurrence-to-symmetry theorem. No `sorry`; only the axioms `propext`, `Classical.choice`, `Quot.sound`. |
+| Declaration coverage | The signed specialization y = −1, the Lagrange form and the even-layer proposition are proved in the manuscript and are not separate Lean declarations. Formal definitions, theorem statements and supplementary executable examples are mapped in [`docs/FORMALIZATION.md`](FORMALIZATION.md). |
+| Checked by finite computation | Exact enumeration: all 255 layered patterns with layer sum ≤ 8 to length 16; 34 orderings of six multisets with odd layers to length 22; general indecomposable summands (171 pairs, 35 triples, 25 further patterns) to length 10. Exact symbolic identities of the generic step for k ≤ 6. Executable Lean enumeration from the formal definitions for lengths ≤ 5 (two-cycle distribution of 3412-avoiding involutions; avoidance counts for the patterns 12 and 21) agrees with the known values. No discrepancy. Finite checks prove nothing for arbitrary n or k. See [`docs/VERIFICATION.md`](VERIFICATION.md). |
+| Novelty | **Provisional; priority not established.** Searches on 2026-10-19 (arXiv API, OpenAlex citation lists of the four key papers, Crossref, authors' web pages, AMS meeting programmes, Permutation Patterns 2026 materials, general web search) found no published or preprint proof of Conjecture 3.14 of Egge–Mansour 2006 or Conjecture 6.9 of Egge 2004. A March 2026 AMS abstract by Burstein and Egge states a proof of the ordinary layered symmetry; the July 2026 abstract and slides by the same group (with Elizalde) list it as a conjecture with special cases proved. No written proof by them was available as of 2026-10-19. The all-even layered case was already implied by Albert–Bouvel 2015 and Egge 2007. A search on 2026-10-19 found no earlier formalization of permutation pattern avoidance, of 3412-avoiding involutions or of these conjectures in Lean, Isabelle or Coq. Details: [`docs/BIBLIOGRAPHY.md`](BIBLIOGRAPHY.md). |
+| Not searched | MathSciNet; Google Scholar and zbMATH citation lists (unavailable); theses; printed journal versions (paywalled; numbering checked on author manuscripts); the source index of the Isabelle Archive of Formal Proofs directly. The search for the statement with arbitrary indecomposable summands was narrower than for layered patterns. |
+| Authorship | [@AIOvernight](https://x.com/AIOvernight), for the manuscript, the formalization and this repository. |
+| OEIS | Not applicable (no new sequences are claimed). |
+| Licences | Code (`src/`, `lean/`): MIT ([`LICENSE`](../LICENSE)). Manuscript, documentation, data, logs: CC BY 4.0 ([`LICENSE-DATA.md`](../LICENSE-DATA.md)). |
+| Open historical issue | Priority remains unresolved in view of the documented 2026 announcements. No interpretation of their scope or claim of confirmed priority is made. |
+
+Reports of errors, missing hypotheses or equivalent earlier results are welcome through the [issue template](../.github/ISSUE_TEMPLATE/mathematical_review.md).

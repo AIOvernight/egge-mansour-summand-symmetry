@@ -1,0 +1,43 @@
+identity k=1 PASS 0.001s
+orders k=1 chunk=0 PASS n=1 0.001s
+orders k=2 chunk=0 PASS n=2 0.001s
+identity k=2 PASS 0.004s
+orders k=3 chunk=0 PASS n=6 0.003s
+identity k=3 PASS 0.018s
+orders k=4 chunk=0 PASS n=24 0.059s
+identity k=4 PASS 0.094s
+orders k=5 chunk=8 PASS n=7 0.231s
+orders k=5 chunk=1 PASS n=8 0.258s
+orders k=5 chunk=4 PASS n=8 0.260s
+orders k=5 chunk=3 PASS n=8 0.262s
+orders k=5 chunk=6 PASS n=8 0.263s
+orders k=5 chunk=7 PASS n=8 0.265s
+orders k=5 chunk=0 PASS n=8 0.283s
+orders k=5 chunk=10 PASS n=7 0.290s
+orders k=5 chunk=12 PASS n=7 0.241s
+orders k=5 chunk=2 PASS n=8 0.319s
+orders k=5 chunk=13 PASS n=7 0.235s
+orders k=5 chunk=5 PASS n=8 0.334s
+orders k=5 chunk=11 PASS n=7 0.328s
+orders k=5 chunk=9 PASS n=7 0.353s
+orders k=5 chunk=14 PASS n=7 0.231s
+orders k=5 chunk=15 PASS n=7 0.229s
+identity k=5 PASS 1.428s
+identity k=6 PASS 85.985s
+orders k=6 chunk=9 PASS n=45 94.319s
+orders k=6 chunk=1 PASS n=45 95.503s
+orders k=6 chunk=6 PASS n=45 95.645s
+orders k=6 chunk=3 PASS n=45 96.013s
+orders k=6 chunk=4 PASS n=45 96.526s
+orders k=6 chunk=7 PASS n=45 97.154s
+orders k=6 chunk=11 PASS n=45 97.166s
+orders k=6 chunk=5 PASS n=45 97.617s
+orders k=6 chunk=2 PASS n=45 97.699s
+orders k=6 chunk=14 PASS n=45 96.755s
+orders k=6 chunk=13 PASS n=45 97.870s
+orders k=6 chunk=0 PASS n=45 98.480s
+orders k=6 chunk=8 PASS n=45 98.526s
+orders k=6 chunk=10 PASS n=45 98.984s
+orders k=6 chunk=12 PASS n=45 99.727s
+orders k=6 chunk=15 PASS n=45 55.891s
+ALL PASS 142.01194117200794

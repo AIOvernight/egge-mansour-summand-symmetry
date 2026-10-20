@@ -1,0 +1,15 @@
+('231', '21') SYMMETRIC n<=10
+('312', '21') SYMMETRIC n<=10
+('2413', '1') SYMMETRIC n<=10
+('2413', '21') SYMMETRIC n<=10
+('3142', '1') SYMMETRIC n<=10
+('4231', '321') SYMMETRIC n<=10
+('2431', '1') SYMMETRIC n<=10
+('3421', '21') SYMMETRIC n<=10
+('231', '312') SYMMETRIC n<=10
+('231', '1', '21') SYMMETRIC n<=10
+('2413', '1', '21') SYMMETRIC n<=10
+('312', '1', '231') SYMMETRIC n<=10
+indecomposable blocks of size<=4: 18
+pairs tested 171 failures 0 time 3.6s
+triples tested 35 failures 0 time 7.0s

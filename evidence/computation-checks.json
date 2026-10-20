@@ -1,0 +1,9 @@
+{
+  "csv_rows": 46206,
+  "distinct_pattern_n_r_cells": 23283,
+  "duplicate_domain_discrepancies": 0,
+  "B_order_symmetry_discrepancies": 0,
+  "blocks_pair_failures": [],
+  "blocks_triple_failures": [],
+  "A_G_n12_equal_after_mode_removal": true
+}

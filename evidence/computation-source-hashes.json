@@ -1,0 +1,62 @@
+[
+  {
+    "file": "src/general/blocks.py",
+    "reference_source_sha256": "b87e4327888d9acecfaf32c760f02fb9573b8cff3b009978a65908ab6b2f86eb",
+    "packaged_source_sha256": "b87e4327888d9acecfaf32c760f02fb9573b8cff3b009978a65908ab6b2f86eb",
+    "byte_identical": true
+  },
+  {
+    "file": "src/general/blocks_all.py",
+    "reference_source_sha256": "bc5fca3424af10568a15418881373ee16fe70c020fb402d8c8980b1d6316aceb",
+    "packaged_source_sha256": "fe8df67ee55f43ac75f23d8e187b15e1e7439725c80c1007b495de2775f9107f",
+    "byte_identical": false
+  },
+  {
+    "file": "src/review/review_general_components.py",
+    "reference_source_sha256": "f023f8163f3f8014697b7e0c00507e046986ad9f2573154cfb618430150957fb",
+    "packaged_source_sha256": "f023f8163f3f8014697b7e0c00507e046986ad9f2573154cfb618430150957fb",
+    "byte_identical": true
+  },
+  {
+    "file": "src/review/review_independent.py",
+    "reference_source_sha256": "a42ce0a4b8271ebe8e3019e66a09c84ed5ae10df3bc8ab3e750c56991c8cf46c",
+    "packaged_source_sha256": "a42ce0a4b8271ebe8e3019e66a09c84ed5ae10df3bc8ab3e750c56991c8cf46c",
+    "byte_identical": true
+  },
+  {
+    "file": "src/review/review_symbolic.py",
+    "reference_source_sha256": "50d163beb763cbc95adeb37caf2c837262983ddb6757222c68a9c707b360edd5",
+    "packaged_source_sha256": "50d163beb763cbc95adeb37caf2c837262983ddb6757222c68a9c707b360edd5",
+    "byte_identical": true
+  },
+  {
+    "file": "src/verification/algebra_flint.py",
+    "reference_source_sha256": "5b02c22a62aa88451f01639e03d77b1b9d71ae24abf56c9372f6a6ab390106e3",
+    "packaged_source_sha256": "9c54bed53a5a054954dd5c97958152ad6dff96dc600eb002f35a6338eeb49663",
+    "byte_identical": false
+  },
+  {
+    "file": "src/verification/check_series.py",
+    "reference_source_sha256": "0490faa812d65c074aa3cb64bdd85b5ec276f46bee6b21b129d783b3191e752e",
+    "packaged_source_sha256": "ea58bca6fb5f314e43f630ffe585b51d32e8c12e15c20136b7b3bb32000b488f",
+    "byte_identical": false
+  },
+  {
+    "file": "src/verification/literal.cpp",
+    "reference_source_sha256": "54f903c76db3029633004c7d55e43feeb64dc7db634d58ca0ba8d471406a9353",
+    "packaged_source_sha256": "54f903c76db3029633004c7d55e43feeb64dc7db634d58ca0ba8d471406a9353",
+    "byte_identical": true
+  },
+  {
+    "file": "src/verification/requirements-algebra.txt",
+    "reference_source_sha256": "4cef508304e84c21f73cf412712165dc26e40978cb784bc08a876948b559d90d",
+    "packaged_source_sha256": "4cef508304e84c21f73cf412712165dc26e40978cb784bc08a876948b559d90d",
+    "byte_identical": true
+  },
+  {
+    "file": "src/verification/run.sh",
+    "reference_source_sha256": "4da0c0e827aaf4b993fde0b3e65ce4a2e2e7e693a4183da13a9c076535055d11",
+    "packaged_source_sha256": "6c1f2a3579c2562f15be6bef6c43a0b305650ff055228c64b3daa8e8b8f2f5a1",
+    "byte_identical": false
+  }
+]

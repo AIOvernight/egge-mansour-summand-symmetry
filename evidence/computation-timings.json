@@ -1,0 +1,111 @@
+[
+  {
+    "name": "literal",
+    "command": [
+      "bash",
+      "src/verification/run.sh",
+      "results/literal"
+    ],
+    "wall_seconds": 118.68901767395437,
+    "returncode": 0,
+    "log": "evidence/literal/run.log"
+  },
+  {
+    "name": "algebra",
+    "command": [
+      "python3",
+      "src/verification/algebra_flint.py",
+      "--max-k",
+      "6",
+      "--workers",
+      "16",
+      "--output",
+      "data/algebra/exact-k6.json"
+    ],
+    "wall_seconds": 142.09674681304023,
+    "returncode": 0,
+    "log": "evidence/algebra/exact-k6.log"
+  },
+  {
+    "name": "independent-literal",
+    "command": [
+      "python3",
+      "src/review/review_independent.py",
+      "--n",
+      "10",
+      "--weight",
+      "7",
+      "--workers",
+      "16",
+      "--output",
+      "data/review/independent-literal-n10.json"
+    ],
+    "wall_seconds": 2.113113829982467,
+    "returncode": 0,
+    "log": "evidence/review/independent-literal.log"
+  },
+  {
+    "name": "independent-symbolic",
+    "command": [
+      "python3",
+      "src/review/review_symbolic.py",
+      "--max-k",
+      "4",
+      "--output",
+      "data/review/independent-symbolic-k4.json"
+    ],
+    "wall_seconds": 2.810544264037162,
+    "returncode": 0,
+    "log": "evidence/review/independent-symbolic.log"
+  },
+  {
+    "name": "general-components",
+    "command": [
+      "python3",
+      "src/review/review_general_components.py",
+      "--n",
+      "10",
+      "--output",
+      "data/review/general-components-n10.json"
+    ],
+    "wall_seconds": 1.5439382490003482,
+    "returncode": 0,
+    "log": "evidence/review/general-components.log"
+  },
+  {
+    "name": "blocks",
+    "command": [
+      "python3",
+      "src/general/blocks_all.py",
+      "10",
+      "data/blocks_symmetry_n10.json"
+    ],
+    "wall_seconds": 14.974981395003852,
+    "returncode": 0,
+    "log": "evidence/review/blocks.log"
+  },
+  {
+    "name": "review-A12",
+    "command": [
+      "results/literal/literal",
+      "A",
+      "12",
+      "data/review/counts-A-n12.csv"
+    ],
+    "wall_seconds": 0.11163792095612735,
+    "returncode": 0,
+    "log": "evidence/review/A-n12.log"
+  },
+  {
+    "name": "review-G12",
+    "command": [
+      "results/literal/literal",
+      "G",
+      "12",
+      "data/review/counts-G-n12.csv"
+    ],
+    "wall_seconds": 0.09661842498462647,
+    "returncode": 0,
+    "log": "evidence/review/G-n12.log"
+  }
+]

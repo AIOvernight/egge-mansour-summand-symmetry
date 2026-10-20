@@ -1,0 +1,68 @@
+{
+  "results": [
+    {
+      "k": 1,
+      "orders_checked": 1,
+      "identities": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments",
+        "all_permutations",
+        "denominator_factorization"
+      ],
+      "elapsed_seconds": 0.003877439012285322
+    },
+    {
+      "k": 2,
+      "orders_checked": 2,
+      "identities": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments",
+        "all_permutations",
+        "denominator_factorization"
+      ],
+      "elapsed_seconds": 0.1326513370149769
+    },
+    {
+      "k": 3,
+      "orders_checked": 6,
+      "identities": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments",
+        "all_permutations",
+        "denominator_factorization"
+      ],
+      "elapsed_seconds": 0.2248236500308849
+    },
+    {
+      "k": 4,
+      "orders_checked": 24,
+      "identities": [
+        "AR-qRER=E^-1",
+        "AW-qW^2=I",
+        "AW=WA",
+        "W=p(A)",
+        "R_1k=p(s)",
+        "moments",
+        "all_permutations",
+        "denominator_factorization"
+      ],
+      "elapsed_seconds": 1.461925946001429
+    }
+  ],
+  "elapsed_seconds": 1.4798731119954027,
+  "script_sha256": "50d163beb763cbc95adeb37caf2c837262983ddb6757222c68a9c707b360edd5",
+  "arithmetic": "exact Q(q,s,c_0,...,c_(k-1)); all variables independent",
+  "gpu_assessment": "exact sparse rational-function symbolic algebra; CPU algebra backend, independent jobs by k"
+}

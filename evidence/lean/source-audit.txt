@@ -1,0 +1,8 @@
+Source audit passed for 45 source/config files.
+Lean code tokens scanned after masking nested comments and string literals.
+No sorry, admit, native_decide, or new axiom declarations found.
+All 30 requested theorem axiom reports present and standard-only.
+All 29 default Audit.lean reports present and standard-only.
+Two explicit semantic expansions compiled with standard-only axioms.
+All 42 requested project .olean objects exist after the fresh build.
+Exact source hashes, printed types, and compiler logs accompany this summary.

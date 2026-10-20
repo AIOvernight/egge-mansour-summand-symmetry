@@ -1,0 +1,548 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\DeclareMathOperator{\tc}{tc}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\ds}{\oplus}
+\newcommand{\sk}{\ominus}
+\newcommand{\red}[1]{\overline{#1}}
+
+\title[Direct summands of forbidden patterns for 3412-avoiding involutions]{Reordering the direct summands of a forbidden pattern for $3412$-avoiding involutions:\\ a proof and a generalization of a conjecture of Egge and Mansour}
+\author{\href{https://x.com/AIOvernight}{@AIOvernight}}
+\date{Version 4, October 19, 2026}
+
+\begin{document}
+
+\begin{abstract}
+Let $\tau_1,\dots,\tau_k$ be direct-sum indecomposable permutations and let $F_{\tau_1\oplus\cdots\oplus\tau_k}(x,y)$ be the generating function for involutions avoiding both $3412$ and $\tau_1\oplus\cdots\oplus\tau_k$, where $x$ marks the length and $y$ marks the number of two-cycles. We prove that $F_{\tau_1\oplus\cdots\oplus\tau_k}(x,y)$ is invariant under every permutation of $\tau_1,\dots,\tau_k$. The complete proof, including the weighted recurrence, is machine-checked in Lean 4 from the finite-permutation definitions. When the summands are decreasing permutations $[a_1],\dots,[a_k]$ this is the conjecture of Egge and Mansour (2006) that $F_{[a_1,\dots,a_k]}(x,y)$ is symmetric in $a_1,\dots,a_k$; its specialization $y=1$ is an earlier conjecture of Egge (2004), and it also contains the $3412$ half of a recent conjecture of Burstein, Egge and Elizalde. The proof converts the weighted recurrence of Egge and Mansour into an upper triangular matrix identity of Riccati type, $AW-x^2y\,W^2=I$, with $A$ bidiagonal, and shows that $F_{\tau_1\oplus\cdots\oplus\tau_k}=p(1-x)$, where $p$ is the polynomial of degree at most $k-1$ interpolating the pairs $\bigl(c_i^{-1}+x^2y\,c_i,\;c_i\bigr)$ with $c_i=F_{\tau_i}$ treated as indeterminates. The interpolation data form an unordered set, which gives the symmetry; the identity is then specialized through a localization whose only inverted elements are $1-x^2y\,c_ic_j$, so that repeated summands, summands of length one and the specializations $y=0$, $y=1$, $y=-1$ require no separate treatment. The statement is the analogue, for $3412$-avoiding involutions, of the rule of Albert and Bouvel that adjacent atoms of a forbidden arch system may be exchanged. We also observe that the case of layered patterns with all layers of even length was already a consequence of their theory and of a transfer theorem of Egge (2007). The relation to recent announcements by Burstein, Egge and Elizalde is discussed in the introduction.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction and statement}
+
+A permutation $\sigma\in S_n$ \emph{contains} a permutation $\tau\in S_m$ (as a classical pattern) if some subsequence of $\sigma(1)\sigma(2)\cdots\sigma(n)$ of length $m$ has the same relative order as $\tau(1)\cdots\tau(m)$; otherwise $\sigma$ \emph{avoids} $\tau$. Every permutation contains the empty permutation $\varnothing$. For $\pi\in S_m$ and $\sigma\in S_n$ the \emph{direct sum} $\pi\ds\sigma\in S_{m+n}$ and \emph{skew sum} $\pi\sk\sigma\in S_{m+n}$ are
+\[
+(\pi\ds\sigma)(i)=\begin{cases}\pi(i)&1\le i\le m,\\ \sigma(i-m)+m& m<i\le m+n,\end{cases}
+\qquad
+(\pi\sk\sigma)(i)=\begin{cases}\pi(i)+n&1\le i\le m,\\ \sigma(i-m)& m<i\le m+n.\end{cases}
+\]
+A nonempty permutation is \emph{(direct-sum) indecomposable} if it is not of the form $\pi\ds\sigma$ with $\pi,\sigma$ nonempty; every permutation is uniquely a direct sum $\tau_1\ds\cdots\ds\tau_k$ of indecomposable permutations, its \emph{summands} (or \emph{components}). For $a\ge1$ let $[a]=a\,(a-1)\cdots 1$ be the decreasing permutation of length $a$, which is indecomposable, and for $a_1,\dots,a_k\ge1$ put $[a_1,\dots,a_k]=[a_1]\ds\cdots\ds[a_k]$; such permutations are called \emph{layered}, and $[a_1],\dots,[a_k]$ are its \emph{layers}. We write $[\,]=\varnothing$ for the layered permutation with no layers.
+
+An \emph{involution} is a permutation equal to its inverse; its cycles have length one (\emph{fixed points}) or two (\emph{two-cycles}). Write $\tc(\sigma)$ for the number of two-cycles of $\sigma$, and $\I$ for the set of all involutions (of all lengths $n\ge0$) that avoid $3412$. For a permutation $\tau$ let $\I(\tau)=\{\sigma\in\I:\sigma\text{ avoids }\tau\}$ and
+\begin{equation}\label{eq:Fdef}
+F_\tau(x,y)=\sum_{\sigma\in\I(\tau)}x^{|\sigma|}y^{\tc(\sigma)}\in\Z[y][[x]].
+\end{equation}
+The empty involution is included and contributes $1$ whenever $\tau\ne\varnothing$; since every permutation contains $\varnothing$ we have $F_\varnothing=0$. For each $n$ the coefficient of $x^n$ in $F_\tau$ is a polynomial in $y$ of degree at most $\lfloor n/2\rfloor$. We abbreviate $F(a_1,\dots,a_k)=F_{[a_1,\dots,a_k]}(x,y)$. The complete proof of the following theorem, from the combinatorial definitions through the weighted recurrence and the algebraic symmetry argument, is verified in Lean 4 with Mathlib; Section~\ref{sec:formal} describes the formal statements and their reproduction. Our main result is:
+
+\begin{theorem}\label{thm:main}
+Let $k\ge1$, let $\tau_1,\dots,\tau_k$ be indecomposable permutations, and let $\rho$ be a permutation of $\{1,\dots,k\}$. Then
+\[
+F_{\tau_1\ds\cdots\ds\tau_k}(x,y)=F_{\tau_{\rho(1)}\ds\cdots\ds\tau_{\rho(k)}}(x,y)\qquad\text{in }\Z[y][[x]].
+\]
+Equivalently, for every $n\ge0$ and $r\ge0$ the number of involutions of length $n$ with exactly $r$ two-cycles avoiding both $3412$ and $\tau_1\ds\cdots\ds\tau_k$ does not depend on the order of the summands.
+\end{theorem}
+
+\begin{corollary}[Conjecture 3.14 of Egge and Mansour \cite{EggeMansour2006}]\label{cor:EM}
+For all $k\ge1$, all positive integers $a_1,\dots,a_k$ and every permutation $\rho$ of $\{1,\dots,k\}$, $F(a_1,\dots,a_k)=F(a_{\rho(1)},\dots,a_{\rho(k)})$ in $\Z[y][[x]]$.
+\end{corollary}
+
+Egge \cite[Conjecture 6.9]{Egge2004} conjectured that $F(a_1,\dots,a_k)|_{y=1}$ is a symmetric function of $a_1,\dots,a_k$, and Egge and Mansour \cite[Conjecture 3.14]{EggeMansour2006} conjectured the bivariate refinement, Corollary~\ref{cor:EM}. Both conjectures were supported by extensive computations (\cite{EggeMansour2006} reports $k=3$, $a_i\le24$ and $k=4$, $a_i\le20$); in January 2026 Egge \cite{EggeSlides2026} presented the ordinary conjecture as open, with checks up to $k=7$. The cases $k\le2$ are theorems of Egge \cite[Theorem 6.7]{Egge2004} and Egge--Mansour \cite[Theorems 3.12--3.13]{EggeMansour2006}, and the case $k=3$ with all layers of even length is \cite[Eq.~(44)]{Egge2004} and \cite[Eq.~(18)]{EggeMansour2006}.
+
+The status of the ordinary conjecture in the most recent public sources is as follows. The abstract of a talk by Burstein and Egge in March 2026 \cite{BursteinEgge2026} states that the symmetry of $G_{[\ell_1,\dots,\ell_m]}=F(\ell_1,\dots,\ell_m)|_{y=1}$, and of its analogue for $312$-avoiding permutations, is proved, together with generalizations and refinements by permutation statistics. The abstract and the slides of a talk by Burstein in July 2026 \cite{BursteinPP2026}, presented as joint work with Egge and Elizalde, again state the full symmetry for both families as ``Conjecture (Egge, 2004)'', checked for $k\le7$, and claim proofs of ``some special cases''; the new results listed there are special cases and variants (generalizations of the two-layer identity, a class of unary-binary patterns, refinements by descents and ascents, and the symmetry of the total number of occurrences of a layered pattern in $312$-avoiding permutations and in $3412$-avoiding involutions), and the following generalization is proposed as a conjecture: for a $3412$-avoiding permutation $\pi$ (respectively a $312$-avoiding permutation $\pi$), the ordinary generating function for involutions avoiding $3412$ and $[m_1,\dots,m_k]\ds(\pi\sk1)$ (respectively for permutations avoiding $312$ and that pattern) is invariant under permutations of $(m_1,\dots,m_k)$. Since $\pi\sk1$ is indecomposable, the $3412$ half of this conjecture is a special case of Theorem~\ref{thm:main}, with the number of two-cycles included (Corollary~\ref{cor:BEE}). No paper or preprint by these authors on the subject was available to us as of October 19, 2026, and neither the bivariate statement nor the general statement of Theorem~\ref{thm:main} appears in these materials. We therefore cannot exclude that a proof of the ordinary conjecture, or of a refinement of it, has been obtained by Burstein, Egge and Elizalde; the proof given here was found independently of their work.
+
+Theorem~\ref{thm:main} is the analogue, for involutions avoiding $3412$, of a rule in the theory of Wilf-equivalence for Catalan structures of Albert and Bouvel \cite{AlbertBouvel2015}: in their framework, which covers $231$-avoiding (equivalently $312$-avoiding) permutations, the direct sum corresponds to concatenation of arch systems, indecomposable permutations correspond to atoms, and rule (3) of \cite[Definition 7]{AlbertBouvel2015} together with \cite[Theorem 8]{AlbertBouvel2015} states exactly that adjacent atoms of a forbidden arch system may be exchanged without changing the enumeration of the avoidance class. Their framework does not apply directly to $3412$-avoiding involutions, which correspond to non-crossing partial matchings rather than perfect matchings, because pattern containment in involutions is not the same as deleting arcs (an occurrence may use one endpoint of an arc without the other). In Section~\ref{sec:cor} we show how their result, combined with a transfer theorem of Egge \cite{Egge2007}, already implied the case of Corollary~\ref{cor:EM} in which all layers have even length.
+
+The proof has three steps. In Section~\ref{sec:rec} we recall the decomposition of $3412$-avoiding involutions and the weighted recurrence of Egge and Mansour \cite[Theorem 3.3]{EggeMansour2006}, which is stated for an arbitrary direct sum of indecomposable permutations, and rewrite it as a \emph{uniform, pole-free} recurrence \eqref{eq:unif2} whose only coefficients are $x$, $x^2y$ and the single-summand series $c_i=F_{\tau_i}$. In Section~\ref{sec:generic} we treat $c_1,\dots,c_k$ as indeterminates and show that the solution $R_{1k}$ of the recurrence is $p(1-x)$ for the interpolation polynomial $p$ through the $k$ pairs $(c_i^{-1}+x^2y\,c_i,\,c_i)$ (Theorem~\ref{thm:generic}); this is a symmetric rational function of $c_1,\dots,c_k$ whose only denominators are $1-x^2y\,c_ic_j$. In Section~\ref{sec:special} we specialize $c_i\mapsto F_{\tau_i}$, which is legitimate because those denominators become units of $\Z[y][[x]]$. Section~\ref{sec:cor} records consequences and explains which special cases were already consequences of the literature, Section~\ref{sec:credits} states precisely which ingredients are classical or due to earlier authors, and Section~\ref{sec:formal} records the machine-checked proof and its exact scope.
+
+\section{The weighted recurrence}\label{sec:rec}
+
+Throughout, $q=x^2y$ and $s=1-x$.
+
+\subsection{Decomposition of 3412-avoiding involutions}
+The following structural result is due to Guibert \cite[Remark 4.28]{Guibert1995}, as cited in \cite[\S2]{EggeMansour2006}; see \cite[Proposition 2.1]{EggeMansour2006} and \cite[Proposition 2.9]{Egge2004} (Proposition 2.8 in the arXiv version of that paper). We include the short proof for completeness.
+
+\begin{lemma}\label{lem:decomp}
+Every nonempty $\sigma\in\I$ can be written in exactly one of the two forms
+\[
+\sigma=1\ds v\qquad\text{or}\qquad \sigma=(1\sk u\sk1)\ds v,
+\]
+with $u,v\in\I$. Conversely, every permutation of either form, with $u,v\in\I$, lies in $\I$. In the second form $\tc(\sigma)=1+\tc(u)+\tc(v)$ and $|\sigma|=2+|u|+|v|$; in the first form $\tc(\sigma)=\tc(v)$ and $|\sigma|=1+|v|$.
+\end{lemma}
+
+\begin{proof}
+Let $m=\sigma(1)$. If $m=1$, then $\sigma=1\ds v$ with $v$ an involution avoiding $3412$. Suppose $m\ge2$, so $\sigma(m)=1$. If some $i$ with $1<i<m$ had $j=\sigma(i)>m$, then $\sigma(j)=i$ and the entries at positions $1<i<m<j$ would be $m,j,1,i$ with $1<i<m<j$, an occurrence of $3412$. Hence $\sigma$ maps $\{2,\dots,m-1\}$ to itself, and $\sigma=(1\sk u\sk1)\ds v$ with $u,v$ involutions; both avoid $3412$ because they are patterns of $\sigma$. The two forms are distinguished by whether $\sigma(1)=1$, and $u,v$ are determined by $\sigma$.
+
+For the converse, $3412$ is indecomposable, so an occurrence of $3412$ in $\pi\ds v$ lies inside $\pi$ or inside $v$. An occurrence inside $1\sk u\sk1$ cannot use the first entry (the maximum, which would have to play the role of the ``3'' and be exceeded by the ``4'') nor the last entry (the minimum, which would have to play the role of the ``2'' and exceed the ``1''), so it would lie inside $u$. The cycle count is clear.
+\end{proof}
+
+\subsection{Containment in the two forms}
+For a permutation $\tau$ let $\red\tau$ (the \emph{reduction} of $\tau$) be the permutation obtained from $\tau$ by deleting its first entry if that entry is the maximum $|\tau|$, and deleting its last entry if that entry is the minimum $1$ (both deletions are performed when both conditions hold), and standardizing the result (replacing its entries by $1,2,\dots$ in the same relative order); for $\tau=\varnothing$ put $\red\varnothing=\varnothing$. Thus $\red1=\varnothing$, $\red{[a]}=[a-2]$ for $a\ge2$ (with $[0]=\varnothing$), $\red{312}=12$, $\red{231}=12$, and $\red\tau=\tau$ whenever $\tau$ neither begins with its maximum nor ends with its minimum. This is Definition 3.2 of \cite{EggeMansour2006}.
+
+\begin{lemma}\label{lem:layers}
+Let $\pi=\tau_1\ds\cdots\ds\tau_m$ with $m\ge1$ and $\tau_1,\dots,\tau_m$ indecomposable, and let $u,v,\tau$ be permutations.
+\begin{enumerate}
+\item[(a)] $\tau\ds v$ contains $\pi$ if and only if there is $t\in\{0,\dots,m\}$ such that $\tau$ contains $\tau_1\ds\cdots\ds\tau_t$ and $v$ contains $\tau_{t+1}\ds\cdots\ds\tau_m$.
+\item[(b)] For every permutation $\tau$, $1\sk u\sk1$ contains $\tau$ if and only if $u$ contains $\red\tau$.
+\item[(c)] If $m\ge2$, then $\red\pi=\pi$; hence $1\sk u\sk1$ contains $\pi$ if and only if $u$ contains $\pi$.
+\item[(d)] If $\tau_1\ne1$, then $1\ds v$ contains $\pi$ if and only if $v$ contains $\pi$. If $\tau_1=1$, then $1\ds v$ contains $\pi$ if and only if $v$ contains $\tau_2\ds\cdots\ds\tau_m$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) In an occurrence of $\pi$ in $\tau\ds v$, each summand $\tau_i$, being indecomposable, lies entirely in $\tau$ or entirely in $v$: otherwise the entries of the occurrence of $\tau_i$ lying in $\tau$ would precede and be smaller than those lying in $v$, giving a nontrivial direct-sum decomposition of $\tau_i$. Since every entry of $\tau$ precedes and is smaller than every entry of $v$, the summands lying in $\tau$ form an initial segment $\tau_1\ds\cdots\ds\tau_t$. The converse is immediate.
+
+(b) The cases $\tau=\varnothing$ and $\tau=1$ are immediate: $\red\tau=\varnothing$ is contained in every permutation, and so is $\tau$ (the permutation $1\sk u\sk1$ being nonempty). Assume $|\tau|\ge2$, so that the first and last entries of $\tau$ are distinct. Let $M$ and $m$ be the first and last entries of $\sigma=1\sk u\sk1$; $M$ is the maximum and leftmost entry of $\sigma$ and $m$ is the minimum and rightmost entry. If $u$ contains $\red\tau$, then prepending $M$ to an occurrence of $\red\tau$ when $\tau$ begins with its maximum, and appending $m$ when $\tau$ ends with its minimum, gives an occurrence of $\tau$ in $\sigma$. Conversely, let $O$ be an occurrence of $\tau$ in $\sigma$. If $O$ uses $M$, then $M$ is the first and largest element of $O$, so $\tau$ begins with its maximum; likewise if $O$ uses $m$ then $\tau$ ends with its minimum. Remove from $O$ the element playing the first entry of $\tau$ when $\tau$ begins with its maximum, and the element playing the last entry of $\tau$ when $\tau$ ends with its minimum. By the previous sentence, $M$ and $m$ are among the removed elements whenever they belong to $O$, so what remains is an occurrence of $\red\tau$ inside $u$.
+
+(c) The first entry of $\pi$ lies in $\tau_1$ and is at most $|\tau_1|<|\pi|$, so $\pi$ does not begin with its maximum; the last entry of $\pi$ lies in $\tau_m$ and exceeds $|\tau_1|\ge1$, so $\pi$ does not end with its minimum. Hence $\red\pi=\pi$, and (b) applies.
+
+(d) Apply (a) with $\tau=1$. The permutation $1$ contains $\tau_1\ds\cdots\ds\tau_t$ exactly for $t=0$, and also for $t=1$ when $\tau_1=1$. So for $\tau_1\ne1$ the condition is that $v$ contains $\pi$. For $\tau_1=1$ the condition is that $v$ contains $\pi$ or $v$ contains $\tau_2\ds\cdots\ds\tau_m$; since containing $\pi$ implies containing $\tau_2\ds\cdots\ds\tau_m$, this reduces to the latter.
+\end{proof}
+
+\subsection{The recurrence}
+Fix $k\ge1$ and indecomposable permutations $\tau_1,\dots,\tau_k$. For $1\le i\le j\le k$ write
+\[
+F_{ij}=F_{\tau_i\ds\cdots\ds\tau_j},\qquad c_i=F_{ii}=F_{\tau_i},\qquad h_i=F_{\red{\tau_i}}.
+\]
+Thus $h_i=0$ when $\red{\tau_i}=\varnothing$, in particular when $\tau_i=1$ or $\tau_i=[2]$; for layers, $h_i=F(a_i-2)$ when $\tau_i=[a_i]$ with $a_i\ge3$. Define also $F_{i+1,i}=F_\varnothing=0$ (the ``empty interval''), so that for $i=j$ the expression $F_{i+1,j}$ equals $0$.
+
+\begin{proposition}[Egge--Mansour {\cite[Theorem 3.3]{EggeMansour2006}}]\label{prop:rec}
+For $1\le i\le j\le k$,
+\begin{equation}\label{eq:rec}
+F_{ij}=1+x\,B_{ij}+q\,h_iF_{ij}+q\,(F_{i,i+1}-h_i)F_{i+1,j}+q\sum_{r=i+2}^{j}(F_{ir}-F_{i,r-1})F_{rj},
+\end{equation}
+where $B_{ij}=F_{ij}$ if $\tau_i\ne1$ and $B_{ij}=F_{i+1,j}$ if $\tau_i=1$. For $i=j$ the term $q(F_{i,i+1}-h_i)F_{i+1,j}$ is $0$ (it is multiplied by $F_{i+1,i}=0$) and the sum is empty.
+\end{proposition}
+
+\begin{proof}
+Let $\pi=\tau_i\ds\cdots\ds\tau_j$. By Lemma~\ref{lem:decomp}, $\I(\pi)$ is the disjoint union of $\{\varnothing\}$, the involutions $1\ds v$ with $v\in\I$ such that $1\ds v$ avoids $\pi$, and the involutions $(1\sk u\sk1)\ds v$ with $u,v\in\I$ such that the whole permutation avoids $\pi$. The empty involution contributes $1$. By Lemma~\ref{lem:layers}(d) the second class contributes $xF_{ij}$ if $\tau_i\ne1$ and $xF_{i+1,j}$ if $\tau_i=1$, i.e.\ $xB_{ij}$.
+
+For the third class, let $\tau=1\sk u\sk1$ and let $t(u)\in\{0,\dots,j-i+1\}$ be the largest $t$ such that $\tau$ contains $\tau_i\ds\cdots\ds\tau_{i+t-1}$ (this containment is monotone decreasing in $t$, and holds for $t=0$). By Lemma~\ref{lem:layers}(a), $\tau\ds v$ avoids $\pi$ if and only if $v$ avoids $\tau_{i+t(u)}\ds\cdots\ds\tau_j$; when $t(u)=j-i+1$ this pattern is $\varnothing$ and no $v$ qualifies. Now let $U_t$ be the set of $u\in\I$ such that $\tau=1\sk u\sk 1$ avoids $\tau_i\ds\cdots\ds\tau_{i+t-1}$, and let $G_t$ be its generating function (weight $x^{|u|}y^{\tc(u)}$). By Lemma~\ref{lem:layers}(b),(c): $U_0=\varnothing$ (every permutation contains $\varnothing$), so $G_0=0$; $U_1$ is the set of $u$ avoiding $\red{\tau_i}$, so $G_1=h_i$; and for $t\ge2$, $U_t$ is the set of $u$ avoiding $\tau_i\ds\cdots\ds\tau_{i+t-1}$, so $G_t=F_{i,i+t-1}$. Since $U_t\subseteq U_{t+1}$, the set of $u$ with $t(u)=t$ is $U_{t+1}\setminus U_t$, with generating function $G_{t+1}-G_t$. Taking into account the factor $x^2y$ for the outer two-cycle (Lemma~\ref{lem:decomp}), the third class contributes
+\[
+q\sum_{t=0}^{j-i}(G_{t+1}-G_t)\,F_{i+t,j}
+= q\,h_iF_{ij}+q\,(F_{i,i+1}-h_i)F_{i+1,j}+q\sum_{t=2}^{j-i}(F_{i,i+t}-F_{i,i+t-1})F_{i+t,j}.
+\]
+Substituting $r=i+t$ gives \eqref{eq:rec}. This is exactly \cite[Theorem 3.3]{EggeMansour2006} with $\alpha_\ell=\tau_{\ell}$, the reduced prefixes $\red{\alpha_i\ds\cdots\ds\alpha_{i+t-1}}$ of \cite[Definition 3.2]{EggeMansour2006} being $\varnothing$ for $t=0$, $\red{\tau_i}$ for $t=1$, and the prefix itself for $t\ge2$ by Lemma~\ref{lem:layers}(c).
+\end{proof}
+
+For a single summand ($i=j$) the recurrence reads $c_i=1+xB_{ii}+qh_ic_i$, with $B_{ii}=F_{i+1,i}=0$ when $\tau_i=1$, so
+\begin{equation}\label{eq:single}
+c_i=1\ \ (\tau_i=1),\qquad c_i=\frac{1}{1-x-q\,h_i}=\frac1{s-q\,h_i}\ \ (\tau_i\ne1).
+\end{equation}
+(For layers, a closed form in terms of Chebyshev polynomials is \cite[Theorem 3.8]{EggeMansour2006}; we do not need it.) In particular $c_i\in\Z[y][[x]]$ has constant term $1$, and when $\tau_i\ne1$,
+\begin{equation}\label{eq:qh}
+q\,h_i=s-c_i^{-1}.
+\end{equation}
+
+\subsection{The uniform pole-free form}
+The case distinction in \eqref{eq:rec} between $\tau_i=1$ and $\tau_i\ne1$ disappears once the recurrence is solved for the leading occurrence of $F_{ij}$.
+
+\begin{proposition}\label{prop:unif}
+For $1\le i<j\le k$,
+\begin{equation}\label{eq:unif}
+F_{ij}=c_i+(1-s\,c_i)F_{i+1,j}+q\,c_i\sum_{r=i+1}^{j}F_{ir}F_{rj}-q\,c_i\sum_{r=i+1}^{j-1}F_{ir}F_{r+1,j},
+\end{equation}
+equivalently
+\begin{equation}\label{eq:unif2}
+(1-q\,c_ic_j)\,F_{ij}=c_i+(1-s\,c_i)F_{i+1,j}+q\,c_i\sum_{r=i+1}^{j-1}F_{ir}\bigl(F_{rj}-F_{r+1,j}\bigr).
+\end{equation}
+Since $1-qc_ic_j$ has constant term $1$ in $x$, \eqref{eq:unif2} determines each $F_{ij}$ uniquely in $\Z[y][[x]]$ from the series of shorter intervals, and ultimately from $c_1,\dots,c_k$ alone.
+\end{proposition}
+
+\begin{proof}
+Define
+\[
+\Sigma_{ij}=\sum_{r=i+1}^{j}F_{ir}F_{rj}-\sum_{r=i+1}^{j-1}F_{ir}F_{r+1,j},
+\qquad\text{so that}\qquad
+F_{i,i+1}F_{i+1,j}+\sum_{r=i+2}^{j}(F_{ir}-F_{i,r-1})F_{rj}=\Sigma_{ij}
+\]
+(reindex the subtracted terms by $r-1$). Then the right side of \eqref{eq:rec} equals $1+xB_{ij}+qh_iF_{ij}-qh_iF_{i+1,j}+q\Sigma_{ij}$.
+
+\emph{Case $\tau_i\ne1$.} Then $B_{ij}=F_{ij}$ and \eqref{eq:rec} gives $F_{ij}(1-x-qh_i)=1-qh_iF_{i+1,j}+q\Sigma_{ij}$. By \eqref{eq:qh}, $1-x-qh_i=c_i^{-1}$ and $qh_i=s-c_i^{-1}$, hence $F_{ij}=c_i-(sc_i-1)F_{i+1,j}+qc_i\Sigma_{ij}$, which is \eqref{eq:unif}.
+
+\emph{Case $\tau_i=1$.} Then $c_i=1$, $h_i=0$, $B_{ij}=F_{i+1,j}$, and \eqref{eq:rec} gives $F_{ij}=1+xF_{i+1,j}+q\Sigma_{ij}$. The right side of \eqref{eq:unif} with $c_i=1$ is $1+(1-s)F_{i+1,j}+q\Sigma_{ij}=1+xF_{i+1,j}+q\Sigma_{ij}$, the same.
+
+Equation \eqref{eq:unif2} follows by moving the term $r=j$ of the first sum, $qc_iF_{ij}c_j$, to the left.
+\end{proof}
+
+\begin{remark}\label{rem:hstar}
+One can also obtain \eqref{eq:unif} by substituting into \eqref{eq:rec}, for $\tau_i=1$, the formal value $h_i^*=(s-c_i^{-1})/q=-1/(xy)$ and $B_{ij}=F_{ij}$; the two altered terms $xF_{ij}+qh_i^*F_{ij}$ cancel and $-qh_i^*F_{i+1,j}=xF_{i+1,j}$ restores the fixed-point term. The two-case verification above avoids any auxiliary Laurent expression: every quantity in \eqref{eq:unif}--\eqref{eq:unif2} lies in $\Z[y][[x]]$.
+\end{remark}
+
+\begin{example}\label{ex:two}
+For $k=2$, \eqref{eq:unif2} gives
+\begin{equation}\label{eq:two}
+F_{\tau_1\ds\tau_2}=\frac{c_1+c_2-s\,c_1c_2}{1-q\,c_1c_2},
+\end{equation}
+which is visibly symmetric. For $\tau_1=\tau_2=1$ this is $(1+x)/(1-x^2y)$, in agreement with the direct count: the involutions avoiding $12$ are the decreasing permutations, one of each length $n$, with $\lfloor n/2\rfloor$ two-cycles. Note that $F(1,1)\ne F(2)=1/(1-x)$ as bivariate series although they agree at $y=1$; this is the odd/odd exception in \cite[Theorems 3.12--3.13]{EggeMansour2006}.
+\end{example}
+
+\section{The generic recurrence and interpolation}\label{sec:generic}
+
+In this section $q,s,c_1,\dots,c_k$ are \emph{independent indeterminates} over $\Q$; nothing from Section~\ref{sec:rec} is used except the shape of the recurrence \eqref{eq:unif2}. Let
+\[
+K=\Q(q,s,c_1,\dots,c_k),\qquad
+L=\Z\bigl[q,s,c_1,\dots,c_k,\;(1-q\,c_ic_j)^{-1}\ (1\le i<j\le k)\bigr]\subset K.
+\]
+
+\begin{definition}\label{def:R}
+Define $R_{ij}\in K$ for $1\le i\le j\le k$ by $R_{ii}=c_i$, $R_{i+1,i}=0$, and, for $i<j$, recursively on $j-i$,
+\begin{equation}\label{eq:Rrec}
+(1-q\,c_ic_j)\,R_{ij}=c_i+(1-s\,c_i)R_{i+1,j}+q\,c_i\sum_{r=i+1}^{j-1}R_{ir}\bigl(R_{rj}-R_{r+1,j}\bigr).
+\end{equation}
+\end{definition}
+
+\begin{lemma}\label{lem:inL}
+Every $R_{ij}$ lies in $L$, and for $i<j$
+\begin{equation}\label{eq:Runif}
+R_{ij}=c_i+(1-s\,c_i)R_{i+1,j}+q\,c_i\sum_{r=i+1}^{j}R_{ir}R_{rj}-q\,c_i\sum_{r=i+1}^{j-1}R_{ir}R_{r+1,j}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Induction on $j-i$: the right side of \eqref{eq:Rrec} is a polynomial in $q,s,c$ and in $R$'s of shorter intervals, and only $1-qc_ic_j$ is inverted. Equation \eqref{eq:Runif} is \eqref{eq:Rrec} with the term $qc_iR_{ij}c_j$ moved back to the right.
+\end{proof}
+
+\subsection{Matrix form}
+Let $R=(R_{ij})$ be the upper triangular $k\times k$ matrix with entries $R_{ij}$ for $i\le j$ and $0$ below the diagonal. Let $S$ be the matrix with $1$ in positions $(i,i+1)$ and $0$ elsewhere, let $E=I-S$, so that $E^{-1}=I+S+\dots+S^{k-1}$ is the matrix with $1$ in every position $(i,j)$ with $i\le j$. Put
+\[
+\alpha_i=c_i^{-1}+q\,c_i\qquad(1\le i\le k),
+\]
+and let $A$ be the upper bidiagonal matrix with $A_{ii}=\alpha_i$ and $A_{i,i+1}=s-\alpha_i$, i.e.\ $A=\mathrm{diag}(\alpha_1,\dots,\alpha_k)E+sS$.
+
+\begin{lemma}\label{lem:matrix}
+$AR-q\,RER=E^{-1}$.
+\end{lemma}
+
+\begin{proof}
+All three matrices are upper triangular. For $i\le j$, $(AR)_{ij}=\alpha_iR_{ij}+(s-\alpha_i)R_{i+1,j}$, with $R_{i+1,j}=0$ when $i=j$; and $(ER)_{rj}=R_{rj}-R_{r+1,j}$, so
+\[
+(RER)_{ij}=\sum_{r=i}^{j}R_{ir}\bigl(R_{rj}-R_{r+1,j}\bigr)=\sum_{r=i}^{j}R_{ir}R_{rj}-\sum_{r=i}^{j-1}R_{ir}R_{r+1,j}.
+\]
+On the diagonal, $(AR-qRER)_{ii}=\alpha_ic_i-qc_i^2=1$. For $i<j$, separate the terms $r=i$: using $\alpha_i-qc_i=c_i^{-1}$ and $s-\alpha_i+qc_i=s-c_i^{-1}$,
+\[
+(AR-qRER)_{ij}=c_i^{-1}R_{ij}+\bigl(s-c_i^{-1}\bigr)R_{i+1,j}-q\sum_{r=i+1}^{j}R_{ir}R_{rj}+q\sum_{r=i+1}^{j-1}R_{ir}R_{r+1,j},
+\]
+and multiplying \eqref{eq:Runif} by $c_i^{-1}$ shows that this equals $1$.
+\end{proof}
+
+Put $W=RE$. Then $W$ is upper triangular with $W_{ii}=c_i$ and $W_{ij}=R_{ij}-R_{i,j-1}$ for $i<j$; in particular $W$ is invertible over $K$. Multiplying Lemma~\ref{lem:matrix} on the right by $E$ gives the matrix Riccati equation
+\begin{equation}\label{eq:riccati}
+AW-q\,W^2=I,
+\end{equation}
+hence $A=qW+W^{-1}$, and in particular
+\begin{equation}\label{eq:commute}
+AW=WA.
+\end{equation}
+
+\subsection{Interpolation}
+For $i\ne j$,
+\begin{equation}\label{eq:alphadiff}
+\alpha_i-\alpha_j=\frac{c_j-c_i}{c_ic_j}+q(c_i-c_j)=\frac{(c_j-c_i)(1-q\,c_ic_j)}{c_ic_j}\neq0\quad\text{in }K,
+\end{equation}
+so there is a unique polynomial $p\in K[z]$ of degree at most $k-1$ with
+\begin{equation}\label{eq:interp}
+p(\alpha_i)=c_i\qquad(1\le i\le k).
+\end{equation}
+
+\begin{lemma}\label{lem:WpA}
+$W=p(A)$.
+\end{lemma}
+
+\begin{proof}
+Both $W$ and $p(A)$ are upper triangular, commute with $A$ (by \eqref{eq:commute}, and trivially), and have diagonal $(c_1,\dots,c_k)$: the diagonal of $p(A)$ is $(p(\alpha_1),\dots,p(\alpha_k))$ since $A$ is triangular. Hence $X=W-p(A)$ is strictly upper triangular and $AX=XA$. For $i<j$, since column $j$ of $A$ has nonzero entries only in rows $j-1$ and $j$,
+\[
+0=(AX-XA)_{ij}=\alpha_iX_{ij}+(s-\alpha_i)X_{i+1,j}-X_{ij}\alpha_j-X_{i,j-1}(s-\alpha_{j-1}),
+\]
+where $X_{i+1,j}$ and $X_{i,j-1}$ are entries of $X$ on the diagonal $j-i-1$ (and are $0$ if $j=i+1$). By induction on $j-i\ge1$ those entries vanish, so $(\alpha_i-\alpha_j)X_{ij}=0$ and $X_{ij}=0$ by \eqref{eq:alphadiff}.
+\end{proof}
+
+\begin{lemma}\label{lem:moments}
+Let $\one=(1,\dots,1)^{T}$ and $e_1,\dots,e_k$ be the standard basis vectors. Then $e_1^{T}A^{t}\one=s^{t}$ for $0\le t\le k-1$.
+\end{lemma}
+
+\begin{proof}
+Row $i<k$ of $A\one$ is $\alpha_i+(s-\alpha_i)=s$ and row $k$ is $\alpha_k$, so $A\one=s\one+(\alpha_k-s)e_k$. Since $A$ is upper bidiagonal, $A^{u}e_k$ is supported on rows $k-u,\dots,k$. By induction on $t$,
+\[
+A^{t}\one=s^{t}\one+\sum_{u=0}^{t-1}s^{t-1-u}(\alpha_k-s)A^{u}e_k,
+\]
+and for $t\le k-1$ every vector $A^{u}e_k$ with $u\le t-1\le k-2$ has first coordinate $0$. Hence the first coordinate of $A^{t}\one$ is $s^{t}$.
+\end{proof}
+
+\begin{theorem}\label{thm:generic}
+With $q,s,c_1,\dots,c_k$ indeterminates and $R_{ij}$ as in Definition~\ref{def:R},
+\[
+R_{1k}=p(s),
+\]
+where $p$ is the interpolation polynomial \eqref{eq:interp}. Consequently $R_{1k}\in L$ is invariant under every permutation of $c_1,\dots,c_k$: if $\rho$ is a permutation of $\{1,\dots,k\}$ and $\rho^*$ is the ring automorphism of $K$ fixing $q,s$ and sending $c_i\mapsto c_{\rho(i)}$, then
+\begin{equation}\label{eq:genericsym}
+\rho^*(R_{1k})=R_{1k}\qquad\text{in }L.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Since $R=WE^{-1}$ and the last column of $E^{-1}$ is $\one$, we get $R_{1k}=e_1^{T}W\one=e_1^{T}p(A)\one$ by Lemma~\ref{lem:WpA}. Writing $p(z)=\sum_{t=0}^{k-1}p_tz^{t}$ and applying Lemma~\ref{lem:moments}, $R_{1k}=\sum_tp_ts^{t}=p(s)$.
+
+For the symmetry, note first that $\rho^*$ maps $L$ onto $L$ (it permutes the inverted elements $1-qc_ic_j$), and that $\rho^*(R_{ij})$ is obtained from the recurrence \eqref{eq:Rrec} written for the indeterminates $c_{\rho(1)},\dots,c_{\rho(k)}$; in particular $\rho^*(R_{1k})$ is ``$R_{1k}$ for the reordered variables''. Applying $\rho^*$ to the interpolation conditions \eqref{eq:interp} shows that $\rho^*(p)$ (the polynomial obtained by applying $\rho^*$ to the coefficients of $p$) satisfies $\rho^*(p)(\alpha_{\rho(i)})=c_{\rho(i)}$ for all $i$, i.e.\ $\rho^*(p)$ interpolates the same set of $k$ pairs $\{(\alpha_i,c_i)\}$ and has degree at most $k-1$; by uniqueness, $\rho^*(p)=p$. Since $\rho^*(s)=s$, applying $\rho^*$ to $R_{1k}=p(s)$ gives $\rho^*(R_{1k})=p(s)=R_{1k}$. This is an equality in $K$ between two elements of $L$, hence an equality in $L$.
+\end{proof}
+
+\begin{remark}\label{rem:lagrange}
+Explicitly, by Lagrange's formula, $R_{1k}=\sum_{i=1}^{k}c_i\prod_{j\ne i}\dfrac{s-\alpha_j}{\alpha_i-\alpha_j}$ in $K$. This expression has the denominators $\alpha_i-\alpha_j$, which is why the statement that $R_{1k}$ is \emph{also} an element of $L$ (whose only inverted elements are $1-qc_ic_j$) matters: it is what allows the specialization to coincident values $c_i=c_j$ in the next section. For instance, for $k=2$, $R_{12}=(c_1+c_2-sc_1c_2)/(1-qc_1c_2)$, and setting $c_1=c_2=c$ gives $(2c-sc^2)/(1-qc^2)$, which is the value of the recurrence for the vector $(c,c)$ but is not the degree-$0$ interpolant through the single point $(\alpha(c),c)$. In Newton form, $R_{1k}=\sum_{m=1}^{k}[\alpha_1,\dots,\alpha_m]c\cdot\prod_{t<m}(s-\alpha_t)$ with divided differences of the data $c$, and by Opitz's formula \cite[\S4]{deBoor2005} the entry $(i,j)$ of $p(A)$, $i<j$, is the divided difference $[\alpha_i,\dots,\alpha_j]p$ multiplied by $\prod_{h=i}^{j-1}(s-\alpha_h)$; we do not need these classical facts, since Lemmas~\ref{lem:WpA} and \ref{lem:moments} are proved directly.
+\end{remark}
+
+\begin{remark}
+The degree bound $k-1$ in Lemma~\ref{lem:moments} is sharp: $e_1^TA^k\one\ne s^k$ in general (already for $k=1$, where $A\one=\alpha_1\ne s$). The argument therefore uses exactly the degree range in which the interpolation polynomial is unique.
+\end{remark}
+
+\section{Specialization and proof of Theorem~\ref{thm:main}}\label{sec:special}
+
+Fix indecomposable permutations $\tau_1,\dots,\tau_k$ and consider the ring homomorphism
+\[
+\phi_0:\Z[q,s,c_1,\dots,c_k]\longrightarrow\Z[y][[x]],\qquad q\mapsto x^2y,\quad s\mapsto1-x,\quad c_i\mapsto F_{\tau_i}.
+\]
+Each $F_{\tau_i}$ has constant term $1$ in $x$, so $\phi_0(1-qc_ic_j)=1-x^2yF_{\tau_i}F_{\tau_j}$ has constant term $1$ and is a unit of $\Z[y][[x]]$ (its inverse is the $x$-adically convergent geometric series, whose coefficients are polynomials in $y$). By the universal property of localization, $\phi_0$ extends uniquely to a ring homomorphism
+\begin{equation}\label{eq:phi}
+\phi:L\longrightarrow\Z[y][[x]].
+\end{equation}
+
+\begin{lemma}\label{lem:specialize}
+$\phi(R_{ij})=F_{ij}=F_{\tau_i\ds\cdots\ds\tau_j}$ for all $1\le i\le j\le k$.
+\end{lemma}
+
+\begin{proof}
+Induction on $j-i$. For $i=j$, $\phi(R_{ii})=\phi(c_i)=F_{\tau_i}$. For $i<j$, apply $\phi$ to \eqref{eq:Rrec}: by the induction hypothesis the result is \eqref{eq:unif2} with $\phi(R_{ij})$ in place of $F_{ij}$ on the left and the actual series $F_{rj}$, $F_{r+1,j}$, $F_{ir}$, $F_{i+1,j}$ on the right. By Proposition~\ref{prop:unif} the same equation holds with $F_{ij}$ on the left, and the left coefficient $1-x^2yF_{\tau_i}F_{\tau_j}$ is a unit, so $\phi(R_{ij})=F_{ij}$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $\rho$ be a permutation of $\{1,\dots,k\}$ and let $\phi'$ be the homomorphism \eqref{eq:phi} for the reordered sequence $(\tau_{\rho(1)},\dots,\tau_{\rho(k)})$; thus $\phi'(c_i)=F_{\tau_{\rho(i)}}$. With $\rho^*$ as in Theorem~\ref{thm:generic} we have $\phi'=\phi\circ\rho^*$ on $L$ (both are ring homomorphisms $L\to\Z[y][[x]]$ agreeing on the generators $q,s,c_i$ and on the inverses of the $1-qc_ic_j$). By Lemma~\ref{lem:specialize} applied to both sequences and by \eqref{eq:genericsym},
+\[
+F_{\tau_{\rho(1)}\ds\cdots\ds\tau_{\rho(k)}}=\phi'(R_{1k})=\phi(\rho^*R_{1k})=\phi(R_{1k})=F_{\tau_1\ds\cdots\ds\tau_k}.
+\]
+The statement about coefficients follows by comparing the coefficients of $x^ny^r$ on both sides.
+\end{proof}
+
+\begin{remark}[Repeated summands, summands of length one, $y=0$]\label{rem:repeated}
+No hypothesis $\alpha_i\ne\alpha_j$ or $c_i\ne c_j$ is used after Theorem~\ref{thm:generic}: that theorem is an identity in $L$, and $\phi$ is defined on all of $L$. Thus repeated summands (where $F_{\tau_i}=F_{\tau_j}$), summands with equal series, and summands equal to $1$ need no separate argument. Likewise $y\mapsto0$, $y\mapsto1$ and $y\mapsto-1$ are ring homomorphisms $\Z[y][[x]]\to\Z[[x]]$ applied after the identity has been established; the Laurent expression $-1/(xy)$ of Remark~\ref{rem:hstar} never enters the proof. As a sanity check at $y=0$ for layered patterns: the only involution without two-cycles is the identity, so $F(a_1,\dots,a_k)|_{y=0}$ is $(1-x^k)/(1-x)$ if all $a_i=1$ and $1/(1-x)$ otherwise; and at $q=0$ the recurrence \eqref{eq:Rrec} collapses to $R_{ij}=c_i+(1-sc_i)R_{i+1,j}$, whence $R_{1k}=\bigl(1-\prod_i(1-sc_i)\bigr)/s$, which with $c_i\in\{1,1/s\}$ gives exactly those two series.
+\end{remark}
+
+\section{Consequences, known cases, and what is new}\label{sec:cor}
+
+\begin{corollary}[Egge's conjecture {\cite[Conjecture 6.9]{Egge2004}}, {\cite[Conjecture 3.8]{Egge2007}}]\label{cor:ordinary}
+The number of involutions of length $n$ avoiding $3412$ and $\tau_1\ds\cdots\ds\tau_k$ is invariant under permutations of the indecomposable summands $\tau_i$; in particular the number of involutions of length $n$ avoiding $3412$ and $[a_1,\dots,a_k]$ is a symmetric function of $(a_1,\dots,a_k)$, i.e.\ $\{3412,[a_1,\dots,a_k]\}$ and $\{3412,[a_{\rho(1)},\dots,a_{\rho(k)}]\}$ are involution-Wilf-equivalent for every $\rho$.
+\end{corollary}
+\begin{proof}
+Set $y=1$ in Theorem~\ref{thm:main}.
+\end{proof}
+
+\begin{corollary}[The $3412$ half of the conjecture of Burstein, Egge and Elizalde \cite{BursteinPP2026}]\label{cor:BEE}
+For every permutation $\pi$ and all positive integers $m_1,\dots,m_k$, the series $F_{[m_1,\dots,m_k]\ds(\pi\sk1)}(x,y)$ is symmetric in $(m_1,\dots,m_k)$. The same holds with $\pi\sk1$ replaced by any indecomposable permutation, and with that summand placed anywhere among the layers.
+\end{corollary}
+\begin{proof}
+$\pi\sk1$ ends with its minimum: in a direct-sum decomposition with a nonempty first summand, every entry of the first summand would have to be smaller than the final entry, which is the global minimum. Hence $\pi\sk1$ is indecomposable and Theorem~\ref{thm:main} applies.
+\end{proof}
+
+\begin{corollary}[Signed enumeration]\label{cor:sign}
+The generating function $\sum_\sigma\operatorname{sgn}(\sigma)x^{|\sigma|}$ over involutions avoiding $3412$ and $\tau_1\ds\cdots\ds\tau_k$, and the generating functions of the even and of the odd such involutions, are invariant under permutations of the summands.
+\end{corollary}
+\begin{proof}
+For an involution, $\operatorname{sgn}(\sigma)=(-1)^{\tc(\sigma)}$, so the signed series is $F|_{y=-1}$ and the even and odd series are $\tfrac12\bigl(F|_{y=1}\pm F|_{y=-1}\bigr)$.
+\end{proof}
+For layered patterns these are Conjectures 4.17 and 4.18 of the preprint \cite{EggeMansourArXiv2004}, an earlier version of \cite{EggeMansour2006} with a different title in which the second variable is replaced by the sign.
+
+\subsection{Explicit formula for summands with distinct series}
+
+\begin{corollary}\label{cor:explicit}
+Let $c_i=F_{\tau_i}$ and $\alpha_i=c_i^{-1}+x^2y\,c_i\in\Z[y][[x]]$. If the series $c_1,\dots,c_k$ are pairwise distinct (for instance if $\tau_i=[a_i]$ with $a_1,\dots,a_k$ pairwise distinct), then in the field of fractions of $\Z[y][[x]]$
+\[
+F_{\tau_1\ds\cdots\ds\tau_k}=\sum_{i=1}^{k}c_i\prod_{j\ne i}\frac{1-x-\alpha_j}{\alpha_i-\alpha_j}.
+\]
+\end{corollary}
+\begin{proof}
+For $a<b$ the series $F(a)$ and $F(b)$ differ, since the decreasing involution $[a]$ contributes to $F(b)$ but not to $F(a)$; this justifies the parenthetical example. If the $c_i$ are pairwise distinct, then by \eqref{eq:alphadiff} (applied in the domain $\Z[y][[x]]$, where $1-x^2yc_ic_j$ is a unit) the $\alpha_i$ are pairwise distinct. Let $L'\subset K$ be the localization of $\Z[q,s,c_1,\dots,c_k]$ at the multiplicative set generated by the elements $1-qc_ic_j$, $c_i$ and $c_i-c_j$ ($i\ne j$). The homomorphism $\phi_0$ composed with the inclusion of $\Z[y][[x]]$ into its field of fractions sends all these elements to nonzero elements, hence extends to $L'$, and the extension agrees with $\phi$ on $L\subseteq L'$. The Lagrange form of Remark~\ref{rem:lagrange} is an identity in $L'$; applying the extended homomorphism and Lemma~\ref{lem:specialize} gives the formula.
+\end{proof}
+
+When some $c_i$ coincide, the Lagrange form has vanishing denominators and the corollary does not apply; the correct value is still $\phi(R_{1k})$, computed by the recurrence \eqref{eq:Rrec}, which is a symmetric expression with denominators $1-x^2yc_ic_j$ only (see Remark~\ref{rem:lagrange} for $k=2$). For $k=2$ the formula \eqref{eq:two} together with \eqref{eq:single} recovers the two-layer results of \cite[Theorem 6.7]{Egge2004} and \cite[Theorems 3.12--3.13]{EggeMansour2006}.
+
+\subsection{Layers of even length: a known case}
+
+The following proposition shows that, when all layers have even length, the bivariate series is determined by its specialization at $y=1$. Combined with the known proof of the ordinary conjecture in this case (Remark~\ref{rem:AB}), it shows that the all-even case of Corollary~\ref{cor:EM} was already a consequence of the literature.
+
+\begin{proposition}\label{prop:even}
+Let $a=(a_1,\dots,a_k)$ with all $a_i$ even. Then there is a series $H_a(z)\in\Z[[z]]$ such that
+\begin{equation}\label{eq:even}
+F(a_1,\dots,a_k)(x,y)=\frac1{1-x}\,H_a\Bigl(\frac{x^2y}{(1-x)^2}\Bigr).
+\end{equation}
+Consequently, if $a$ and $b$ are two vectors with all entries even and $F_a(x,1)=F_b(x,1)$, then $F_a(x,y)=F_b(x,y)$.
+\end{proposition}
+
+\begin{proof}
+For a layered pattern $\pi$ let $H_\pi(z)=\sum_\sigma z^{\tc(\sigma)}$, the sum over fixed-point-free $\sigma\in\I(\pi)$ (the empty involution included, so that $H_\pi$ has constant term $1$ for $\pi\ne\varnothing$, and $H_\varnothing=0$). By Lemma~\ref{lem:decomp} a nonempty fixed-point-free $\sigma\in\I$ has the form $(1\sk u\sk1)\ds v$ with $u,v\in\I$ fixed-point-free, and conversely. Let $\mathcal E$ be the finite family of layered patterns consisting of the intervals $[a_i,\dots,a_j]$ ($i\le j$) together with the single layers $[a_i-2],[a_i-4],\dots$ down to $[2]$; all its members have even layers. Repeating the proof of Proposition~\ref{prop:rec} without the fixed-point class, for every $\pi=[b_1,\dots,b_m]\in\mathcal E$ we obtain
+\begin{equation}\label{eq:Hrec}
+H_{\pi}=1+z\sum_{t=0}^{m-1}\bigl(G'_{t+1}-G'_t\bigr)H_{[b_{t+1},\dots,b_m]},
+\end{equation}
+where $G'_0=0$, $G'_1=H_{[b_1-2]}$ ($=0$ if $b_1=2$) and $G'_t=H_{[b_1,\dots,b_t]}$ for $t\ge2$; all patterns occurring in \eqref{eq:Hrec} belong to $\mathcal E\cup\{\varnothing\}$ because $b_1\ge2$ is even. Now set $z=q/s^2$ with $q=x^2y$, $s=1-x$ (note $q/s^2\in x^2\Z[y][[x]]$, so the substitution is well defined) and put $\widehat F_\pi=s^{-1}H_\pi(q/s^2)\in\Z[y][[x]]$, $\widehat F_\varnothing=0$. Since $z\,H\cdot H=(q/s^2)(s\widehat F)(s\widehat F)=q\,\widehat F\cdot\widehat F$, multiplying \eqref{eq:Hrec} by $s^{-1}$ and then by $s$ gives
+\[
+s\,\widehat F_\pi=1+q\sum_{t=0}^{m-1}\bigl(\widehat G'_{t+1}-\widehat G'_t\bigr)\widehat F_{[b_{t+1},\dots,b_m]},
+\]
+with $\widehat G'$ defined from $\widehat F$ as $G'$ from $H$. Since $s\widehat F_\pi=\widehat F_\pi-x\widehat F_\pi$ and $b_1\ge2$, this is precisely the system \eqref{eq:rec} (where $B=F$ because every first layer has length at least $2$) satisfied by the actual series $F_\pi$, $\pi\in\mathcal E$. That system has at most one solution $(F_\pi)_{\pi\in\mathcal E}$ in $\Z[y][[x]]$: every term on the right side other than $1$ carries a factor $x$ or $q=x^2y$, so the coefficient of $x^n$ in each $F_\pi$ is determined by the coefficients of $x^{n'}$, $n'<n$, of the series in the family, and the constant terms are $1$. Hence $\widehat F_\pi=F_\pi$ for all $\pi\in\mathcal E$, which is \eqref{eq:even} with $H_a=H_{[a_1,\dots,a_k]}$.
+
+For the consequence, the substitution $z\mapsto x^2/(1-x)^2$ is injective on $\Z[[z]]$ (the lowest term $h_mz^m$ of a nonzero series is sent to $h_mx^{2m}+O(x^{2m+1})$). If $F_a(x,1)=F_b(x,1)$, then \eqref{eq:even} at $y=1$ gives $H_a(x^2/(1-x)^2)=H_b(x^2/(1-x)^2)$, so $H_a=H_b$ and $F_a=F_b$ by \eqref{eq:even}.
+\end{proof}
+
+\begin{remark}[The all-even case and the ``312 conjecture'' follow from Albert--Bouvel and Egge]\label{rem:AB}
+Egge \cite[Theorem 3.3]{Egge2007} proved, for every $c\ge0$, the transfer formula
+\begin{equation}\label{eq:transfer}
+F^{(c)}_{[l_1,\dots,l_m]}(x)=\frac{1}{1+\sqrt x-cx}\;G_{[2l_1,\dots,2l_m]}\Bigl(\frac{\sqrt x}{1+\sqrt x-cx}\Bigr),
+\end{equation}
+where $G_\pi(x)=F_\pi(x,1)$ is the ordinary generating function of this paper and $F^{(c)}_\pi(x)$ counts the colored permutations avoiding the set $P_c$ of \cite{Egge2007} and the layered pattern $\pi$; for $c=0$ these are the ordinary $312$-avoiding permutations. Egge conjectured \cite[Conjecture 3.7]{Egge2007} that $F^{(c)}_{[l_1,\dots,l_m]}$ is symmetric in the $l_i$ (the case $c=0$ is the ``312 conjecture'' of \cite{EggeSlides2026}) and observed that it follows from Conjecture 6.9 of \cite{Egge2004}, i.e.\ from Corollary~\ref{cor:ordinary} above. The converse direction for $c=0$ is also immediate: substituting $t=\sqrt x/(1+\sqrt x)$ in \eqref{eq:transfer} gives $G_{[2l_1,\dots,2l_m]}(t)=(1-t)^{-1}F^{(0)}_{[l_1,\dots,l_m]}\bigl(t^2/(1-t)^2\bigr)$.
+
+The case $c=0$ of Egge's Conjecture 3.7 is in fact a consequence of the general theory of Wilf-equivalence for Catalan structures of Albert and Bouvel \cite{AlbertBouvel2015}, which appears not to have been noticed. A permutation avoids $312$ if and only if its inverse avoids $231$, and layered permutations are involutions, so $|\mathrm{Av}_n(312,[l_1,\dots,l_m])|=|\mathrm{Av}_n(231,[l_1,\dots,l_m])|$. Under the bijection of \cite[\S2]{AlbertBouvel2015} between $231$-avoiding permutations and arch systems (non-crossing perfect matchings), which is compatible with pattern containment, the direct sum of permutations corresponds to the concatenation of arch systems and the decreasing permutation $[l]$ corresponds to a nest of $l$ arches, which is an atom. Rule (3) of \cite[Definition 7]{AlbertBouvel2015}, $PabQ\sim PbaQ$ for atoms $a,b$ and arbitrary arch systems $P,Q$, shows that reordering the atoms of a concatenation of atoms yields $\sim$-equivalent arch systems, and \cite[Theorem 8]{AlbertBouvel2015} states that $\sim$-equivalent arch systems define principal classes with the same generating function. Hence $F^{(0)}_{[l_1,\dots,l_m]}(x)$ is symmetric in the $l_i$, and by \eqref{eq:transfer} in both directions, so is $G_{[2l_1,\dots,2l_m]}$ and then $F^{(c)}_{[l_1,\dots,l_m]}$ for every $c\ge0$. The same argument shows that the $312$ half of the conjecture of Burstein, Egge and Elizalde mentioned in the introduction, and more generally the invariance of $|\mathrm{Av}_n(312,\tau_1\ds\cdots\ds\tau_k)|$ under permutations of the indecomposable summands $\tau_i$, follows from \cite{AlbertBouvel2015}: if some $\tau_i$ contains $312$, then every reordered pattern contains $312$ and the claim is trivial; otherwise invert (which maps $312$-avoiders to $231$-avoiders, inverts each summand and preserves indecomposability) and apply the arch-system rule.
+
+Consequently: (i) the ordinary conjecture \cite[Conjecture 6.9]{Egge2004} for vectors \emph{all of whose entries are even} was already a consequence of \cite{AlbertBouvel2015} and \cite{Egge2007}; (ii) by Proposition~\ref{prop:even}, so was the bivariate statement of Corollary~\ref{cor:EM} for such vectors; and (iii) all of \cite[Conjecture 3.7]{Egge2007} was already a theorem. The content of Corollary~\ref{cor:EM} that is not covered by these sources is the case in which at least one layer has odd length (and $k\ge3$, the cases $k\le2$ being known); the content of Theorem~\ref{thm:main} beyond layered patterns is not covered by them either, since the transfer \eqref{eq:transfer} is specific to layers of even length.
+\end{remark}
+
+\section{What is new and what is classical}\label{sec:credits}
+
+\begin{itemize}
+\item The decomposition of Lemma~\ref{lem:decomp} is due to Guibert \cite{Guibert1995} and appears as \cite[Proposition 2.1]{EggeMansour2006} and \cite[Proposition 2.9]{Egge2004}. The reduction $\red\tau$ and Lemma~\ref{lem:layers}(b) are \cite[Definition 3.2]{EggeMansour2006} and the observation following it. The weighted recurrence of Proposition~\ref{prop:rec} is \cite[Theorem 3.3]{EggeMansour2006}; its $y=1$ case is \cite[Corollary 5.6]{Egge2004} and \cite[Eq.~(13)]{Egge2007}. The single-layer series \eqref{eq:single} appears in Chebyshev form as \cite[Theorem 3.8]{EggeMansour2006}. The layered conjecture is \cite[Conjecture 3.14]{EggeMansour2006}, refining \cite[Conjecture 6.9]{Egge2004} (Conjecture 6.10 in the arXiv version of that paper).
+\item Known cases of Corollary~\ref{cor:EM}: $k\le2$ \cite[Theorem 6.7]{Egge2004}, \cite[Theorems 3.12--3.13]{EggeMansour2006}; $k=3$ with even layers \cite[Eq.~(44)]{Egge2004}, \cite[Eq.~(18)]{EggeMansour2006}; all layers even, any $k$: \cite{AlbertBouvel2015} with \cite[Theorem 3.3]{Egge2007} and Proposition~\ref{prop:even} (Remark~\ref{rem:AB}).
+\item The ordinary symmetry for layered patterns (the layered case of Corollary~\ref{cor:ordinary}) was announced as proved in \cite{BursteinEgge2026} and presented as a conjecture with proved special cases in \cite{BursteinPP2026}, where the generalization of Corollary~\ref{cor:BEE} was conjectured; see the introduction. No written proof was available to us. The $312$ analogue of Theorem~\ref{thm:main} is a case of \cite[Definition 7 (3) and Theorem 8]{AlbertBouvel2015}.
+\item Polynomial interpolation, the fact that the interpolation polynomial depends only on the set of data pairs, and the representation of polynomials of a bidiagonal matrix by divided differences (Opitz's formula, see \cite[\S4]{deBoor2005}, where it is attributed to G.~Opitz, 1964) are classical. Matrix Riccati equations have been used in enumerative combinatorics before, e.g.\ \cite{CGJN1981}. None of these sources treats pattern avoidance.
+\item The contribution of the present paper is the exact conversion of the Egge--Mansour recurrence into the uniform pole-free form \eqref{eq:unif2}, its identification with the Riccati equation \eqref{eq:riccati} for a bidiagonal $A$, the evaluation $R_{1k}=p(1-x)$ (Theorem~\ref{thm:generic}), the specialization argument of Section~\ref{sec:special}, which covers repeated summands and summands of length one without any genericity assumption, and the observation that the argument applies to arbitrary indecomposable summands. Proposition~\ref{prop:even} and Remark~\ref{rem:AB} delimit what was already known.
+\item The proof gives no bijection between the two avoidance classes and no information about statistics beyond the length and the number of two-cycles (which together determine the number of fixed points and the sign).
+\end{itemize}
+
+
+\begingroup
+\sloppy
+\section{Formal verification}\label{sec:formal}
+
+Theorem~\ref{thm:main} and Corollary~\ref{cor:EM}, both as identities of bivariate generating series and as equalities of the finite counts for every length and number of two-cycles, are proved in Lean~4 with Mathlib from the combinatorial definitions. In particular, Proposition~\ref{prop:rec} is proved in the project, not supplied as a hypothesis. The source, dependency pins, declaration map and verification evidence accompany this manuscript in the public repository
+\begin{center}
+\url{https://github.com/AIOvernight/egge-mansour-summand-symmetry}.
+\end{center}
+The file \texttt{docs/FORMALIZATION.md} gives the full manuscript-to-source map.
+
+\subsection{Definitions and proof chain}
+The namespace \texttt{EggeMansour.Combinatorics} defines a permutation of length $n$ as \texttt{Equiv.Perm (Fin n)} and a pattern of varying length as a dependent pair \texttt{Pattern}. Positions and values start at zero. Containment is an increasing map of positions that preserves and reflects strict value order. Involutivity is the equation $\sigma(\sigma(i))=i$, indecomposability is nonemptiness together with the absence of a proper nonempty invariant initial segment, and \texttt{twoCycles} counts positions $i<\sigma(i)$. The predicate for the counted class is involutivity together with avoidance of the permutation with zero-based word $[2,3,0,1]$ and of the additional forbidden pattern. The coefficient of $x^n$ is the finite sum of the monomials $y^{\tc(\sigma)}$ over that class. Thus \texttt{patternSeries} takes values in \texttt{PowerSeries (Polynomial Int)}, representing $\Z[y][[x]]$, and \texttt{avoiderCount} is the literal finite cardinality at $(n,t)$; \texttt{coeff\_coeff\_avoiderSeries} identifies these counts with the coefficients.
+
+The modules \texttt{Guibert}, \texttt{GuibertBijection} and \texttt{GuibertPair} prove the no-crossing argument, the unique restrictions to the interior and suffix of the first arc, and the two constructor bijections of Lemma~\ref{lem:decomp}. The declaration \texttt{guibert\_split} gives the empty, fixed-first and paired-first alternatives. Direct-sum containment and the reduction equivalence for $1\sk u\sk1$ are proved from containment; they include the empty and singleton boundary cases. The disjoint avoidance-class partition, its prefix cells and the weights of the constructors then yield \texttt{listWeightedIdentity} and \texttt{combinatorialWeightedRecurrence}. The parameter is initially the series of the $u$ for which $1\sk u\sk1$ avoids a block. The theorem \texttt{wrappedSeries\_eq\_reducedSeries} identifies it with $F_{\red\tau}$, yielding \texttt{reducedWeightedRecurrence}, the literal weighted recurrence of Egge--Mansour \cite[Theorem 3.3]{EggeMansour2006}.
+
+The algebraic proof formalizes the uniform recurrence, the matrix Riccati identity, commutation and interpolation, the bidiagonal moments, localization and specialization. Applying \texttt{weighted\_recurrence\_symmetry} to the proved combinatorial recurrences gives \texttt{definitionBasedSymmetry}; the public declarations below are its consequences. No recurrence, counting or symmetry premise remains in them.
+
+\subsection{Principal Lean statements}
+The public declarations are given below.
+
+The following signatures are those of \texttt{EggeMansour/FromDefinitions.lean} in the namespace \texttt{EggeMansour.Combinatorics}, written with ASCII identifiers and the equivalent spellings \texttt{Nat}, \texttt{forall}, \texttt{->} and explicit function composition. The variable \texttt{r} is the number of blocks, \texttt{rho} permutes their indices, and \texttt{IndecomposablePattern} includes nonemptiness. The recurrence statement is:
+\begin{small}
+\begin{verbatim}
+theorem reducedWeightedRecurrence {r : Nat}
+    (blocks : Fin r -> Pattern)
+    (hblocks : forall i, IndecomposablePattern (blocks i)) :
+    WeightedRecurrence r seriesX seriesQ
+      (fun i => patternSeries (blockAt blocks i))
+      (fun i => patternSeries (reduce (blockAt blocks i)))
+      (fun i => (blockAt blocks i).1 == 1) (intervalSeries blocks)
+\end{verbatim}
+\end{small}
+Here \texttt{seriesX} is $x$, \texttt{seriesQ} is $x^2y$, \texttt{intervalSeries} gives the series of an interval of blocks, and the Boolean flag records a block of length one. \texttt{WeightedRecurrence} includes the interval boundary conventions, the diagonal values, the singleton reduction and equation~\eqref{eq:rec}.
+
+Theorem~\ref{thm:main} has the series and count forms:
+\begin{small}
+\begin{verbatim}
+theorem patternSeries_reorder {r : Nat}
+    (rho : Equiv.Perm (Fin r)) (blocks : Fin r -> Pattern)
+    (hblocks : forall i, IndecomposablePattern (blocks i)) :
+    patternSeries (sumPatterns (List.ofFn blocks)) =
+      patternSeries
+        (sumPatterns (List.ofFn (fun i => blocks (rho i))))
+
+theorem avoiderCount_reorder {r : Nat}
+    (rho : Equiv.Perm (Fin r)) (blocks : Fin r -> Pattern)
+    (hblocks : forall i, IndecomposablePattern (blocks i))
+    (n t : Nat) :
+    avoiderCount (sumPatterns (List.ofFn blocks)).2 n t =
+      avoiderCount
+        (sumPatterns (List.ofFn (fun i => blocks (rho i)))).2 n t
+\end{verbatim}
+\end{small}
+The projection \texttt{.2} selects the permutation from its length--permutation pair. The formal statements also allow the empty block family, for which both sides count avoidance of the empty pattern and are zero. There is no distinctness or invertibility hypothesis on the block series.
+
+Corollary~\ref{cor:EM} is obtained by proving indecomposability of positive decreasing patterns:
+\begin{small}
+\begin{verbatim}
+theorem layeredSeries_reorder {r : Nat}
+    (rho : Equiv.Perm (Fin r)) (lengths : Fin r -> Nat)
+    (hpositive : forall i, 0 < lengths i) :
+    patternSeries (layeredPattern lengths) =
+      patternSeries (layeredPattern (fun i => lengths (rho i)))
+
+theorem layeredCount_reorder {r : Nat}
+    (rho : Equiv.Perm (Fin r)) (lengths : Fin r -> Nat)
+    (hpositive : forall i, 0 < lengths i) (n t : Nat) :
+    avoiderCount (layeredPattern lengths).2 n t =
+      avoiderCount (layeredPattern (fun i => lengths (rho i))).2 n t
+\end{verbatim}
+\end{small}
+Repeated lengths and singleton layers are permitted. The ordinary symmetry of Corollary~\ref{cor:ordinary} follows by summing the proved count equalities over $t\le\lfloor n/2\rfloor$. The specialized corollaries of Section~\ref{sec:cor} are proved in the text; separate formal declarations are not supplied for the signed specialization, the Burstein--Egge--Elizalde pattern construction, the explicit Lagrange formula, the even-layer transfer or the historical deductions from Albert--Bouvel. The Chebyshev and Opitz formulas and the computational checks are likewise outside the formal proof. This distinction describes the formal coverage; Theorem~\ref{thm:main} itself is proved from definitions without additional combinatorial hypotheses.
+
+\subsection{Axioms and reproduction}
+The project has pinned dependencies.
+
+The project pins Lean \texttt{v4.36.0-rc1} and Mathlib commit
+\begin{center}
+\texttt{533bd7c0a49acce520ee20b6ccc3a2f34e76be61}.
+\end{center}
+Transitive revisions are pinned in \texttt{lean/lake-manifest.json}. From a checkout with Elan installed and network access for the dependencies, run:
+\begin{small}
+\begin{verbatim}
+cd lean
+lake exe cache get
+lake build
+lake build EggeMansour.CombinatoricsChecks \
+  EggeMansour.WrapChecks EggeMansour.ReductionChecks
+lake env lean EggeMansour/Audit.lean
+\end{verbatim}
+\end{small}
+The dependency cache supplies Mathlib objects; \texttt{lake build} checks the project proofs. \texttt{Audit.lean} prints the final theorem types and the axiom dependencies of the principal combinatorial and algebraic declarations. The only axioms reported are Lean's standard \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} (or a subset). No new axioms, \texttt{sorry}, \texttt{admit} or \texttt{native\_decide} occur in the project proofs. The source-audit driver \texttt{src/verification/audit\_lean.py} checks these restrictions and records source hashes; \texttt{evidence/lean/} preserves build and audit outputs. The logical trust is in the Lean kernel and these standard axioms. The identification of the formal definitions with the paper's conventions is checked by reading those definitions, supported by executable small examples. Formal verification establishes the theorem; it does not establish historical priority. The documented status of the 2026 announcements in the introduction remains the priority qualification.
+
+\endgroup
+
+\section*{Computational checks}
+The following computations were carried out as consistency checks; the proof does not depend on them, and they are reproducible from the scripts accompanying this manuscript.
+\begin{itemize}
+\item \emph{Symbolic.} With $q,s,c_1,\dots,c_k$ independent indeterminates and exact rational-function arithmetic over $\Q$, the identities $AR-qRER=E^{-1}$, $AW-qW^2=I$, $AW=WA$, $W=p(A)$ (with $p$ in explicit Lagrange form), $e_1^TA^t\one=s^t$ for $t\le k-1$ (and its failure at $t=k$), $R_{1k}=p(s)$, the invariance of $R_{1k}$ under all $k!$ permutations of the $c_i$, and the fact that the reduced denominators of all $R_{ij}$ factor into the $1-qc_ac_b$ only, were verified for $k\le4$ with two exact algebra backends (SymPy and FLINT, sharing one battery of tests), and for $k\le6$ with the FLINT backend ($873$ orderings in total, $720$ of them for $k=6$; about two minutes on 16 cores). The failure of the moment identity at $t=k$ and the comparison of the closed forms of $R_{13}$ and $R_{14}$ specialized at $c_2=c_1$ with the recurrence built directly for the repeated vectors were checked with the second backend.
+\item \emph{Enumerative, layered patterns.} Involutions were generated from the definitions (as partial matchings with fixed points), $3412$-avoidance was tested by direct comparison of four entries, and layered patterns were detected by explicit subsequence tests for $n\le10$ and, for larger $n$, by a structural detector validated against the subsequence tests for $n\le10$; the recurrence was \emph{not} used to generate objects. The counts by $(n,r)$ were compared between all orderings of each multiset of layers and with an independent integer implementation of \eqref{eq:unif2}: all $255$ compositions with $a_1+\dots+a_k\le8$ for $n\le16$ (unrestricted generation of all $46{,}206{,}736$ involutions of length $16$ with the direct $3412$ filter, $853{,}467$ of them surviving, and separately direct generation of the non-crossing partial matchings, with identical counts); all $34$ orderings of $(1,2,3)$, $(1,1,3)$, $(1,3,3)$, $(2,3,4)$, $(1,2,2,3)$, $(1,1,1,2)$ for $n\le22$ by direct generation of non-crossing partial matchings ($400{,}763{,}223$ of length $22$); and an independently written program for all compositions with sum at most $7$ and $n\le10$. In total $46{,}206$ coefficient rows ($23{,}283$ distinct cells (vector, $n$, $r$)) were compared, with no discrepancy; replacing the weight $x^2y$ by $x^2$ in the recurrence is detected as a discrepancy, as it should be. The fastest run (non-crossing matchings generated as Motzkin words, 16 threads) took $73$ seconds for $n=22$.
+\item \emph{Enumerative, general summands.} By brute force from the definitions (subsequence tests for the pattern), $F_{\tau_1\ds\tau_2}$ was compared with $F_{\tau_2\ds\tau_1}$ for all unordered pairs of indecomposable permutations of length at most $4$, and all six orderings of $\tau_1\ds\tau_2\ds\tau_3$ were compared for all multisets of three indecomposable permutations of length at most $3$, for $n\le10$ ($18$ indecomposable permutations of length at most $4$, $171$ unordered pairs, $35$ multisets of three summands of length at most $3$, each compared by $(n,r)$); an independently written program compared $25$ patterns with general summands for $n\le9$. No discrepancy was found.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{AlbertBouvel2015} M.~Albert and M.~Bouvel, A general theory of Wilf-equivalence for Catalan structures, \emph{Electron. J. Combin.} 22 (2015), no.~4, Paper 4.45. \href{https://doi.org/10.37236/5629}{doi:10.37236/5629}; arXiv:1407.8261.
+\bibitem{BursteinEgge2026} A.~Burstein and E.~S. Egge, Two Wilf-equivalences related to Chebyshev polynomials, talk, AMS Special Session on Permutation Patterns I, AMS Spring Eastern Sectional Meeting, March 28, 2026, abstract 1215-05-60699, \url{https://meetings.ams.org/math/spring2026e/meetingapp.cgi/Paper/60699} (consulted October 19, 2026).
+\bibitem{BursteinPP2026} A.~Burstein, Two Wilf-equivalences related to Chebyshev polynomials (joint work with E.~S. Egge and S.~Elizalde), talk, Permutation Patterns 2026, California State University, Los Angeles, July 20--24, 2026; abstract in the conference booklet, pp.~25--26, and slides dated July 23, 2026, both linked from \url{https://sites.google.com/view/permutationpatterns2026} (consulted October 19, 2026).
+\bibitem{CGJN1981} C.~B. Collins, I.~P. Goulden, D.~M. Jackson and O.~M. Nierstrasz, A combinatorial application of matrix Riccati equations and their $q$-analogue, \emph{Discrete Math.} 36 (1981), no.~2, 139--153. \href{https://doi.org/10.1016/0012-365X(81)90234-X}{doi:10.1016/0012-365X(81)90234-X}.
+\bibitem{deBoor2005} C.~de Boor, Divided differences, \emph{Surv. Approx. Theory} 1 (2005), 46--69. arXiv:math/0502036.
+\bibitem{Egge2004} E.~S. Egge, Restricted 3412-avoiding involutions, continued fractions, and Chebyshev polynomials, \emph{Adv. in Appl. Math.} 33 (2004), no.~3, 451--475. \href{https://doi.org/10.1016/j.aam.2003.09.006}{doi:10.1016/j.aam.2003.09.006}. Author manuscript (December 2, 2003): \url{https://www.ericegge.net/papers/3412inv.pdf}; theorem numbers refer to this manuscript. The arXiv version (\emph{Restricted 3412-avoiding involutions: continued fractions, Chebyshev polynomials and enumerations}, arXiv:math/0307050v1, July 3, 2003) numbers the decomposition as Proposition 2.8, the two-layer theorem as Theorem 6.8 and the conjecture as Conjecture 6.10.
+\bibitem{Egge2007} E.~S. Egge, Restricted colored permutations and Chebyshev polynomials, \emph{Discrete Math.} 307 (2007), no.~14, 1792--1800. \href{https://doi.org/10.1016/j.disc.2006.09.027}{doi:10.1016/j.disc.2006.09.027}. Author manuscript (July 25, 2006): \url{https://www.ericegge.net/papers/colorcheb.pdf}.
+\bibitem{EggeMansourArXiv2004} E.~S. Egge and T.~Mansour, Involutions restricted by 3412, continued fractions, and Chebyshev polynomials, preprint, arXiv:math/0401217v1 (January 18, 2004). Earlier version of \cite{EggeMansour2006}.
+\bibitem{EggeMansour2006} E.~S. Egge and T.~Mansour, Bivariate generating functions for involutions restricted by 3412, \emph{Adv. in Appl. Math.} 36 (2006), no.~2, 118--137. \href{https://doi.org/10.1016/j.aam.2005.01.005}{doi:10.1016/j.aam.2005.01.005}. Author manuscript (January 12, 2005): \url{https://www.ericegge.net/papers/3412inv2.pdf}; theorem and conjecture numbers refer to this manuscript.
+\bibitem{Guibert1995} O.~Guibert, \emph{Combinatoire des permutations \`a motifs exclus en liaison avec mots, cartes planaires et tableaux de Young}, PhD thesis, Universit\'e Bordeaux~I, 1995 (not consulted directly; cited through \cite{EggeMansour2006}).
+\bibitem{EggeSlides2026} E.~S. Egge, Two old Wilf equivalences related to the Chebyshev polynomials, talk, AMS Special Session on Permutation Patterns I, Joint Mathematics Meetings, Washington, DC, January 4, 2026; slides at \url{https://www.ericegge.net/slides/AMS_Perm_Patterns_Jan_2026_slides.pdf}.
+\end{thebibliography}
+
+\end{document}

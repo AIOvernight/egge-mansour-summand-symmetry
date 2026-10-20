@@ -1,0 +1,273 @@
+{
+  "artifact_sha256": {
+    "Audit.lean": "94e5f01e5b723dba6d51bde09aa3eab431800552bd80aba1f8ecfc5b2927a922",
+    "build.log": "a404dabea395d837c44dfa4379c320c148c353032bad9519c2167847f5de9b6b",
+    "types-axioms.log": "aaf1eca65ee531b7e4387a6394b8315fb524c89c316d7d2afbfb65b1d085c3de"
+  },
+  "axioms": {
+    "EggeMansour.Combinatorics.avoiderCount_reorder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.coeff_coeff_avoiderSeries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.combinatorialWeightedRecurrence": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.contains_directSum_iff_of_indecomposable": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.contains_directSum_sumPatterns_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.contains_wrap_directSum_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.contains_wrap_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.definitionBasedSymmetry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.fixedFirstEquiv": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.guibert_split": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.layeredCount_reorder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.layeredSeries_reorder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.listWeightedIdentity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.pairedFirstEquiv": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.patternSeries_reorder": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.reducedWeightedRecurrence": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.twoCycles_wrap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.two_mul_twoCycles": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Combinatorics.wrappedSeries_eq_reducedSeries": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.UniformRecurrence.eq_interpolant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.UniformRecurrence.eq_of_units": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.UniformRecurrence.generic_symmetry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.UniformRecurrence.matrix_identity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.UniformRecurrence.matrix_riccati": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Universal.fieldNode_injective": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.Universal.uniform_symmetry_of_generic": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.WeightedRecurrence.toUniform": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.recurrenceImpliesSymmetry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "EggeMansour.weighted_recurrence_symmetry": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "commands": [
+    [
+      "lake",
+      "build",
+      "EggeMansour.Audit",
+      "EggeMansour.AvoiderPartition",
+      "EggeMansour.Bidiagonal",
+      "EggeMansour.Canonical",
+      "EggeMansour.CellSeries",
+      "EggeMansour.Centralizer",
+      "EggeMansour.CombinatorialBridge",
+      "EggeMansour.CombinatorialMain",
+      "EggeMansour.CombinatorialTarget",
+      "EggeMansour.Combinatorics",
+      "EggeMansour.CombinatoricsChecks",
+      "EggeMansour.CombinatoricsCounts",
+      "EggeMansour.ConstructorSeries",
+      "EggeMansour.ContainmentCut",
+      "EggeMansour.Corollaries",
+      "EggeMansour.DirectSumContainment",
+      "EggeMansour.FromDefinitions",
+      "EggeMansour.Generic",
+      "EggeMansour.GenericRecurrence",
+      "EggeMansour.Guibert",
+      "EggeMansour.GuibertBijection",
+      "EggeMansour.GuibertPair",
+      "EggeMansour.Interfaces",
+      "EggeMansour.IntervalRecurrence",
+      "EggeMansour.ListContainment",
+      "EggeMansour.Localization",
+      "EggeMansour.Main",
+      "EggeMansour.MatrixAdapter",
+      "EggeMansour.PatternSums",
+      "EggeMansour.PermutationCast",
+      "EggeMansour.PrefixCells",
+      "EggeMansour.Recurrence",
+      "EggeMansour.Reduction",
+      "EggeMansour.ReductionChecks",
+      "EggeMansour.ReductionSeries",
+      "EggeMansour.Specialization",
+      "EggeMansour.WeightedSeries",
+      "EggeMansour.Wrap",
+      "EggeMansour.WrapChecks",
+      "EggeMansour.WrapContainment",
+      "EggeMansour.WrappedSeries",
+      "EggeMansour"
+    ],
+    [
+      "lake",
+      "env",
+      "lean",
+      "../results/final-lean-audit/Audit.lean"
+    ]
+  ],
+  "git_status": "",
+  "lean_version": "Lean (version 4.36.0-rc1, x86_64-unknown-linux-gnu, commit c9afcddf514a6772bd4d649f7cfc04eff0b9f15e, Release)",
+  "scope": "source-token scan; exact printed types; standard axiom dependencies",
+  "script_sha256": "9bced78cd2f30750b225b096c12dc5edaed75be4a75864b0ed1e5b63cffb4603",
+  "source_inventory": {
+    "path": "SOURCE_SHA256SUMS",
+    "sha256": "50e874e33e96e254ee88456776c809f61d75ecf9f394a8a123b54461adf6398b"
+  },
+  "source_sha256": {
+    "EggeMansour.lean": "d1e0d1a9aa35f337912915f5c19958a8079eddc55213de0aeadc5e45ce6bc8b4",
+    "EggeMansour/Audit.lean": "95bda81577c2d8268e62ae2ce7f879db21b8ba89546cf033076ec0cb5ac2c04e",
+    "EggeMansour/AvoiderPartition.lean": "b09d1b2d2addb7e54bc6a9c393dcde89c64672f8aa485420d541c138fcbe4cf3",
+    "EggeMansour/Bidiagonal.lean": "3be5f6f5a25b46513efc7452fabc971eecada7c3773b9fd50526e149ba807c21",
+    "EggeMansour/Canonical.lean": "827102a575ea5ecd4b95271cfb063092d03f4f4cf6400518cf241bb7be655f50",
+    "EggeMansour/CellSeries.lean": "7a3b5258c5a87f4000c1e8b2887758381bce3f452a8992cce4a084ee5aa8666e",
+    "EggeMansour/Centralizer.lean": "a0db41f896fd18e9bfd17ccc25fdbf54c3e28dddedcdd712f3a12eb8ce6e8691",
+    "EggeMansour/CombinatorialBridge.lean": "e55c7bbce0af9a0d96f6d85990ab6968dcb125ad7c85674d2903b6129a251fdf",
+    "EggeMansour/CombinatorialMain.lean": "689ade88d34a4d65b0384979a7a05f0fb0b821da0ef96ac51d9f3fd417280aa1",
+    "EggeMansour/CombinatorialTarget.lean": "32241aa9bee91ba114924c0e6ae21191d70d013cbfd777f8c4f53ff1579649ae",
+    "EggeMansour/Combinatorics.lean": "efa965b91219552329ffabdc7ed149314c5d0a99e810b1300df209d7f7b79481",
+    "EggeMansour/CombinatoricsChecks.lean": "7e7d5557d559cf1dadb82cbc0ab71b52872048e1c7b1b6b66070d6a49bafd648",
+    "EggeMansour/CombinatoricsCounts.lean": "120da3f31f04bcf64aac20a4ab71db37483a86e3c3ff50481feb36a38a740740",
+    "EggeMansour/ConstructorSeries.lean": "1f64303ec60eaa3eb8262e90dadfb78f676ccae5f0293fe8bab58bcdbb7daae7",
+    "EggeMansour/ContainmentCut.lean": "f33a7ab8cee5af498906d1f403e28bd59bd564084086dff5a5e29de9f6a0a448",
+    "EggeMansour/Corollaries.lean": "4306fa3b44e8d2eb902beb425da374ee78028719c5a516d166e4c27bf64b3016",
+    "EggeMansour/DirectSumContainment.lean": "1a0e0ef56e367fb1501a221319bcea6aeda7dfafcf61b8fb61432b58983213a7",
+    "EggeMansour/FromDefinitions.lean": "d79513b30d5231ac33e7dec78d3a44ee63d53f1c7e4d921cb245b0ba54475b00",
+    "EggeMansour/Generic.lean": "62f83af32c1ea3512d3b90049269229701aed5a5f44cfe59854402ad9548d0b5",
+    "EggeMansour/GenericRecurrence.lean": "84de30731ad0ad58bd5e1bc04a473b9d8729009870be7e1e30ec27efe3d67e35",
+    "EggeMansour/Guibert.lean": "fae5ae6c4873107833c1d71b2d3b67f04c709d099688c3723301460edf5e426c",
+    "EggeMansour/GuibertBijection.lean": "407751f599d8247003415b3390c4339eee4d78fc2b967f79759bd48170640eda",
+    "EggeMansour/GuibertPair.lean": "1a2b52a38197b4585b0ea150ae2d5e8852b2b309d199b238eb66521645e078bd",
+    "EggeMansour/Interfaces.lean": "5c512b5b3b2fa36eacc866d2313269bb1d3e3ef52e7dfb2e3b9936ad0284198d",
+    "EggeMansour/IntervalRecurrence.lean": "ea964348ac2fd7cdd0c89ee1960471087652d467e9e15bc3b174ebd08bd65ab3",
+    "EggeMansour/ListContainment.lean": "df35957b4c7a91cb7db00160e126a1104bd802688f89508bc92598bb5e80dd2f",
+    "EggeMansour/Localization.lean": "1edaba049658bed78b25969c4856154c170fbec505c4de740ce2dfee1fde78ce",
+    "EggeMansour/Main.lean": "846a074eb6cdce6e8b637ef2e813183c22e7aad22f28cf8574fcdda772a47447",
+    "EggeMansour/MatrixAdapter.lean": "485d00ee88df592b8d3e69edcae44b7185c10a3a75dea551d47446dc66ed8a45",
+    "EggeMansour/PatternSums.lean": "e927c35dd1830ad5ecb981ffde40452aa99f3465e22297e27574866e9d7ed967",
+    "EggeMansour/PermutationCast.lean": "6865e552b9008c527dea3047c1ccfc22f9463c692d154d2729fdf81170c3ee41",
+    "EggeMansour/PrefixCells.lean": "1f025b3ca47abd7cd150e60493539a0dec3cab27cc2951b297283ebcc430d709",
+    "EggeMansour/Recurrence.lean": "d9fb38ad80f9db4a9aea461d00831b9e58b0c713b340898b661c7549bdb9ef91",
+    "EggeMansour/Reduction.lean": "a018f884a4520b84c6587d7e84d9459e7eddcbd44e2e51d5c12716d81658cd8c",
+    "EggeMansour/ReductionChecks.lean": "a5bb70fe0965a11c0266206415efcf41c087c2380fface78e657e61d63587068",
+    "EggeMansour/ReductionSeries.lean": "f90d3c7e68fbf4f94e0c0f1a3fe3a7530ee4c40aeb41b2f942c78c58926e5aad",
+    "EggeMansour/Specialization.lean": "9d1952719f119b61edf788df5282e7a1f58618a535fb7beed82f34b9a0fad6d3",
+    "EggeMansour/WeightedSeries.lean": "42ad15ee6c26499f6b9141e2d2771ee59c8860a869efd7091a4c4580f82426d3",
+    "EggeMansour/Wrap.lean": "21763eb009021f157375b51854b26fc31a8ace42e8248592622d1b42fe9fcf25",
+    "EggeMansour/WrapChecks.lean": "13edc326a8be48c027292c52c3a5622618ff670a6b55de2413ed27118a456460",
+    "EggeMansour/WrapContainment.lean": "488bb275931f2c3386b2d93773eddd5472784e75f674f59a4a5ed6ed800676a1",
+    "EggeMansour/WrappedSeries.lean": "c8ea50039f25b72f6e826b3b336d513008b413ee598129c0a3a18fff1ef77209",
+    "lake-manifest.json": "8dbcde226cd4505dd7303de5359c9d05f6d126caba66ffe6875ee45001e2e775",
+    "lakefile.toml": "382400d25d63cb8769de24242f36d134800f5ba067051dba1d6d39ac6e6ece14",
+    "lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4"
+  },
+  "status": "passed",
+  "timings_seconds": {
+    "audit": 3.635096969024744,
+    "build": 53.51492674596375
+  }
+}

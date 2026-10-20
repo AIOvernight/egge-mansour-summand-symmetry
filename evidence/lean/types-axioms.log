@@ -1,0 +1,189 @@
+@EggeMansour.WeightedRecurrence.toUniform : ∀ {R : Type u_1} [inst : CommRing R] {n : ℕ} {x q : R} {c h : ℕ → R}
+  {singleton : ℕ → Bool} {F : ℕ → ℕ → R},
+  EggeMansour.WeightedRecurrence n x q c h singleton F → EggeMansour.UniformRecurrence n q (1 - x) c F
+'EggeMansour.WeightedRecurrence.toUniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.UniformRecurrence.eq_of_units : ∀ {R : Type u_1} [inst : CommRing R] {n : ℕ} {q s : R} {c : ℕ → R}
+  {F G : ℕ → ℕ → R},
+  EggeMansour.UniformRecurrence n q s c F →
+    EggeMansour.UniformRecurrence n q s c G →
+      (∀ (i j : ℕ), i < j → j < n → IsUnit (1 - q * c i * c j)) → ∀ (i j : ℕ), i ≤ j → j < n → F i j = G i j
+'EggeMansour.UniformRecurrence.eq_of_units' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.UniformRecurrence.matrix_identity : ∀ {K : Type u_1} [inst : Field K] {n : ℕ} {q s : K} {c : ℕ → K}
+  {F : ℕ → ℕ → K},
+  EggeMansour.UniformRecurrence n q s c F →
+    (∀ i < n, c i ≠ 0) →
+      EggeMansour.riccatiMatrix n q s c * EggeMansour.intervalMatrix n F -
+          q • (EggeMansour.intervalMatrix n F * EggeMansour.differenceMatrix n * EggeMansour.intervalMatrix n F) =
+        EggeMansour.upperOnes n
+'EggeMansour.UniformRecurrence.matrix_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.UniformRecurrence.matrix_riccati : ∀ {K : Type u_1} [inst : Field K] {n : ℕ} {q s : K} {c : ℕ → K}
+  {F : ℕ → ℕ → K},
+  EggeMansour.UniformRecurrence n q s c F →
+    (∀ i < n, c i ≠ 0) →
+      EggeMansour.riccatiMatrix n q s c * (EggeMansour.intervalMatrix n F * EggeMansour.differenceMatrix n) -
+          q •
+            (EggeMansour.intervalMatrix n F * EggeMansour.differenceMatrix n *
+              (EggeMansour.intervalMatrix n F * EggeMansour.differenceMatrix n)) =
+        1
+'EggeMansour.UniformRecurrence.matrix_riccati' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.UniformRecurrence.eq_interpolant : ∀ {K : Type u_1} [inst : Field K] {k : ℕ} {q s : K} {c : ℕ → K}
+  {F : ℕ → ℕ → K},
+  EggeMansour.UniformRecurrence (k + 1) q s c F →
+    (∀ i < k + 1, c i ≠ 0) →
+      (Function.Injective fun i => (c ↑i)⁻¹ + q * c ↑i) →
+        F 0 k = Polynomial.eval s (EggeMansour.interpolant (fun i => (c ↑i)⁻¹ + q * c ↑i) fun i => c ↑i)
+'EggeMansour.UniformRecurrence.eq_interpolant' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.UniformRecurrence.generic_symmetry : ∀ {K : Type u_1} [inst : Field K] {k : ℕ} {q s : K} {c : ℕ → K}
+  {F G : ℕ → ℕ → K} (ρ : Equiv.Perm (Fin (k + 1))),
+  EggeMansour.UniformRecurrence (k + 1) q s c F →
+    EggeMansour.UniformRecurrence (k + 1) q s (EggeMansour.permuteParams ρ c) G →
+      (∀ i < k + 1, c i ≠ 0) → (Function.Injective fun i => (c ↑i)⁻¹ + q * c ↑i) → F 0 k = G 0 k
+'EggeMansour.UniformRecurrence.generic_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.Universal.fieldNode_injective : Function.Injective EggeMansour.Universal.fieldNode
+'EggeMansour.Universal.fieldNode_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Universal.uniform_symmetry_of_generic : ∀ {R : Type u_1} [inst : CommRing R] (n : ℕ),
+  0 < n →
+    ∀ (ρ : Equiv.Perm (Fin n)) (q₀ s₀ : R) (c₀ : ℕ → R),
+      (∀ (i j : ℕ), IsUnit (1 - q₀ * c₀ i * c₀ j)) →
+        (∀ (F G : ℕ → ℕ → EggeMansour.Universal.Field),
+            EggeMansour.UniformRecurrence n EggeMansour.Universal.fieldQ EggeMansour.Universal.fieldS
+                EggeMansour.Universal.fieldC F →
+              EggeMansour.UniformRecurrence n EggeMansour.Universal.fieldQ EggeMansour.Universal.fieldS
+                  (EggeMansour.permuteParams ρ EggeMansour.Universal.fieldC) G →
+                F 0 (n - 1) = G 0 (n - 1)) →
+          ∀ {F G : ℕ → ℕ → R},
+            EggeMansour.UniformRecurrence n q₀ s₀ c₀ F →
+              EggeMansour.UniformRecurrence n q₀ s₀ (EggeMansour.permuteParams ρ c₀) G → F 0 (n - 1) = G 0 (n - 1)
+'EggeMansour.Universal.uniform_symmetry_of_generic' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.recurrenceImpliesSymmetry : EggeMansour.RecurrenceImpliesSymmetry
+'EggeMansour.recurrenceImpliesSymmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.weighted_recurrence_symmetry : ∀ (k : ℕ) (ρ : Equiv.Perm (Fin (k + 1))) (c h : ℕ → EggeMansour.Series)
+  (singleton : ℕ → Bool) (F G : ℕ → ℕ → EggeMansour.Series),
+  EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ c h singleton F →
+    EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ (EggeMansour.permuteParams ρ c)
+        (EggeMansour.permuteParams ρ h) (EggeMansour.permuteParams ρ singleton) G →
+      F 0 k = G 0 k
+'EggeMansour.weighted_recurrence_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.coeff_coeff_avoiderSeries : ∀ {k : ℕ} (τ : EggeMansour.Combinatorics.Perm k) (n t : ℕ),
+  ((PowerSeries.coeff n) (EggeMansour.Combinatorics.avoiderSeries τ)).coeff t =
+    ↑(EggeMansour.Combinatorics.avoiderCount τ n t)
+'EggeMansour.Combinatorics.coeff_coeff_avoiderSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.two_mul_twoCycles : ∀ {n : ℕ} (σ : EggeMansour.Combinatorics.Perm n),
+  EggeMansour.Combinatorics.IsInvolution σ → 2 * EggeMansour.Combinatorics.twoCycles σ = {i | σ i ≠ i}.card
+'EggeMansour.Combinatorics.two_mul_twoCycles' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.twoCycles_wrap : ∀ {n : ℕ} (u : EggeMansour.Combinatorics.Perm n),
+  EggeMansour.Combinatorics.twoCycles (EggeMansour.Combinatorics.wrap u) = EggeMansour.Combinatorics.twoCycles u + 1
+'EggeMansour.Combinatorics.twoCycles_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.contains_directSum_iff_of_indecomposable : ∀ {m n p : ℕ}
+  (σ : EggeMansour.Combinatorics.Perm m) (τ : EggeMansour.Combinatorics.Perm n) (υ : EggeMansour.Combinatorics.Perm p),
+  EggeMansour.Combinatorics.IsIndecomposable υ →
+    (EggeMansour.Combinatorics.Contains (EggeMansour.Combinatorics.directSum σ τ) υ ↔
+      EggeMansour.Combinatorics.Contains σ υ ∨ EggeMansour.Combinatorics.Contains τ υ)
+'EggeMansour.Combinatorics.contains_directSum_iff_of_indecomposable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@EggeMansour.Combinatorics.contains_directSum_sumPatterns_iff : ∀ {m n : ℕ} (σ : EggeMansour.Combinatorics.Perm m)
+  (τ : EggeMansour.Combinatorics.Perm n) (ps : List EggeMansour.Combinatorics.Pattern),
+  (∀ p ∈ ps, EggeMansour.Combinatorics.IndecomposablePattern p) →
+    (EggeMansour.Combinatorics.Contains (EggeMansour.Combinatorics.directSum σ τ)
+        (EggeMansour.Combinatorics.sumPatterns ps).snd ↔
+      ∃ t ≤ ps.length,
+        EggeMansour.Combinatorics.Contains σ (EggeMansour.Combinatorics.sumPatterns (List.take t ps)).snd ∧
+          EggeMansour.Combinatorics.Contains τ (EggeMansour.Combinatorics.sumPatterns (List.drop t ps)).snd)
+'EggeMansour.Combinatorics.contains_directSum_sumPatterns_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+@EggeMansour.Combinatorics.guibert_split : ∀ {n : ℕ} (σ : EggeMansour.Combinatorics.Perm n),
+  EggeMansour.Combinatorics.IsAvoidingInvolution σ →
+    n = 0 ∨
+      (∃ b β,
+          EggeMansour.Combinatorics.IsAvoidingInvolution β ∧
+            ⟨1 + b, EggeMansour.Combinatorics.directSum EggeMansour.Combinatorics.singleton β⟩ = ⟨n, σ⟩) ∨
+        ∃ a b u β,
+          EggeMansour.Combinatorics.IsAvoidingInvolution u ∧
+            EggeMansour.Combinatorics.IsAvoidingInvolution β ∧
+              ⟨a + 2 + b, EggeMansour.Combinatorics.directSum (EggeMansour.Combinatorics.wrap u) β⟩ = ⟨n, σ⟩
+'EggeMansour.Combinatorics.guibert_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.Combinatorics.fixedFirstEquiv : (n : ℕ) →
+  EggeMansour.Combinatorics.AvoidingInvolutions n ≃ EggeMansour.Combinatorics.FixedFirstInvolutions n
+'EggeMansour.Combinatorics.fixedFirstEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.pairedFirstEquiv : {n : ℕ} →
+  (m : Fin (n + 1)) →
+    0 < ↑m →
+      EggeMansour.Combinatorics.AvoidingInvolutions (↑m - 1) × EggeMansour.Combinatorics.AvoidingInvolutions (n - ↑m) ≃
+        EggeMansour.Combinatorics.PairedFirstInvolutions m
+'EggeMansour.Combinatorics.pairedFirstEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.contains_wrap_directSum_iff : ∀ {n a b : ℕ} (u : EggeMansour.Combinatorics.Perm n)
+  (α : EggeMansour.Combinatorics.Perm a) (β : EggeMansour.Combinatorics.Perm b),
+  0 < a →
+    0 < b →
+      (EggeMansour.Combinatorics.Contains (EggeMansour.Combinatorics.wrap u) (EggeMansour.Combinatorics.directSum α β) ↔
+        EggeMansour.Combinatorics.Contains u (EggeMansour.Combinatorics.directSum α β))
+'EggeMansour.Combinatorics.contains_wrap_directSum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence : ∀
+  (blockH : EggeMansour.Combinatorics.Pattern → EggeMansour.Series),
+  (∀ (k : ℕ) (blocks : Fin (k + 1) → EggeMansour.Combinatorics.Pattern),
+      (∀ (i : Fin (k + 1)), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+        EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ
+          (fun i => EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+          (fun i => blockH (EggeMansour.Combinatorics.blockAt blocks i))
+          (fun i => (EggeMansour.Combinatorics.blockAt blocks i).fst == 1)
+          (EggeMansour.Combinatorics.intervalSeries blocks)) →
+    EggeMansour.Combinatorics.DefinitionBasedSymmetry
+'EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+EggeMansour.Combinatorics.listWeightedIdentity : EggeMansour.Combinatorics.ListWeightedIdentity
+'EggeMansour.Combinatorics.listWeightedIdentity' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.combinatorialWeightedRecurrence : ∀ {n : ℕ}
+  (blocks : Fin n → EggeMansour.Combinatorics.Pattern),
+  (∀ (i : Fin n), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+    EggeMansour.WeightedRecurrence n EggeMansour.seriesX EggeMansour.seriesQ
+      (fun i => EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+      (fun i => EggeMansour.Combinatorics.wrappedSeries (EggeMansour.Combinatorics.blockAt blocks i))
+      (fun i => (EggeMansour.Combinatorics.blockAt blocks i).fst == 1) (EggeMansour.Combinatorics.intervalSeries blocks)
+'EggeMansour.Combinatorics.combinatorialWeightedRecurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.Combinatorics.definitionBasedSymmetry : EggeMansour.Combinatorics.DefinitionBasedSymmetry
+'EggeMansour.Combinatorics.definitionBasedSymmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+EggeMansour.Combinatorics.wrappedSeries_eq_reducedSeries : ∀ (p : EggeMansour.Combinatorics.Pattern),
+  EggeMansour.Combinatorics.wrappedSeries p =
+    EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.reduce p)
+'EggeMansour.Combinatorics.wrappedSeries_eq_reducedSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.reducedWeightedRecurrence : ∀ {r : ℕ} (blocks : Fin r → EggeMansour.Combinatorics.Pattern),
+  (∀ (i : Fin r), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+    EggeMansour.WeightedRecurrence r EggeMansour.seriesX EggeMansour.seriesQ
+      (fun i => EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+      (fun i =>
+        EggeMansour.Combinatorics.patternSeries
+          (EggeMansour.Combinatorics.reduce (EggeMansour.Combinatorics.blockAt blocks i)))
+      (fun i => (EggeMansour.Combinatorics.blockAt blocks i).fst == 1) (EggeMansour.Combinatorics.intervalSeries blocks)
+'EggeMansour.Combinatorics.reducedWeightedRecurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.patternSeries_reorder : ∀ {r : ℕ} (ρ : Equiv.Perm (Fin r))
+  (blocks : Fin r → EggeMansour.Combinatorics.Pattern),
+  (∀ (i : Fin r), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+    EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.sumPatterns (List.ofFn blocks)) =
+      EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.sumPatterns (List.ofFn (blocks ∘ ⇑ρ)))
+'EggeMansour.Combinatorics.patternSeries_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.avoiderCount_reorder : ∀ {r : ℕ} (ρ : Equiv.Perm (Fin r))
+  (blocks : Fin r → EggeMansour.Combinatorics.Pattern),
+  (∀ (i : Fin r), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+    ∀ (n t : ℕ),
+      EggeMansour.Combinatorics.avoiderCount (EggeMansour.Combinatorics.sumPatterns (List.ofFn blocks)).snd n t =
+        EggeMansour.Combinatorics.avoiderCount (EggeMansour.Combinatorics.sumPatterns (List.ofFn (blocks ∘ ⇑ρ))).snd n t
+'EggeMansour.Combinatorics.avoiderCount_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.layeredSeries_reorder : ∀ {r : ℕ} (ρ : Equiv.Perm (Fin r)) (lengths : Fin r → ℕ),
+  (∀ (i : Fin r), 0 < lengths i) →
+    EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.layeredPattern lengths) =
+      EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.layeredPattern (lengths ∘ ⇑ρ))
+'EggeMansour.Combinatorics.layeredSeries_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.layeredCount_reorder : ∀ {r : ℕ} (ρ : Equiv.Perm (Fin r)) (lengths : Fin r → ℕ),
+  (∀ (i : Fin r), 0 < lengths i) →
+    ∀ (n t : ℕ),
+      EggeMansour.Combinatorics.avoiderCount (EggeMansour.Combinatorics.layeredPattern lengths).snd n t =
+        EggeMansour.Combinatorics.avoiderCount (EggeMansour.Combinatorics.layeredPattern (lengths ∘ ⇑ρ)).snd n t
+'EggeMansour.Combinatorics.layeredCount_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+@EggeMansour.Combinatorics.contains_wrap_iff : ∀ {k n : ℕ} (u : EggeMansour.Combinatorics.Perm k)
+  (τ : EggeMansour.Combinatorics.Perm n),
+  EggeMansour.Combinatorics.Contains (EggeMansour.Combinatorics.wrap u) τ ↔
+    EggeMansour.Combinatorics.Contains u (EggeMansour.Combinatorics.reduce ⟨n, τ⟩).snd
+'EggeMansour.Combinatorics.contains_wrap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]

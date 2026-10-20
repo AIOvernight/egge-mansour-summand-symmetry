@@ -1,0 +1,104 @@
+cff-version: 1.2.0
+message: >-
+  If you use this repository, please cite it as below, and please also cite the
+  work it builds on: E. S. Egge and T. Mansour, "Bivariate generating functions
+  for involutions restricted by 3412" (Adv. in Appl. Math. 36, 2006), where the
+  weighted recurrence and Conjecture 3.14 appear, and E. S. Egge, "Restricted
+  3412-avoiding involutions, continued fractions, and Chebyshev polynomials"
+  (Adv. in Appl. Math. 33, 2004), where the ordinary conjecture appears. This is
+  a proved theorem, machine-checked in Lean 4 from the definitions; priority
+  is not established.
+title: >-
+  Reordering the indecomposable summands of a forbidden pattern does not change
+  the bivariate generating function of 3412-avoiding involutions: a proof of the
+  Egge–Mansour symmetry conjecture, formalized in Lean 4 from the definitions
+type: software
+authors:
+  - name: "@AIOvernight"
+    website: "https://x.com/AIOvernight"
+date-released: "2026-10-19"
+version: "2.0.0"
+repository-code: "https://github.com/AIOvernight/egge-mansour-summand-symmetry"
+url: "https://github.com/AIOvernight/egge-mansour-summand-symmetry"
+license: MIT
+keywords:
+  - pattern avoidance
+  - involutions
+  - 3412-avoiding involutions
+  - layered patterns
+  - Wilf equivalence
+  - generating functions
+  - matrix Riccati equation
+  - polynomial interpolation
+  - Lean 4
+  - Mathlib
+  - formal verification
+abstract: >-
+  For direct-sum indecomposable permutations tau_1, ..., tau_k, the bivariate
+  generating function F(x,y) of involutions avoiding 3412 and
+  tau_1 ⊕ ... ⊕ tau_k, with x marking length and y marking two-cycles, is
+  invariant under every permutation of the summands, as an identity in
+  Z[y][[x]]. For decreasing summands this is Conjecture 3.14 of Egge and
+  Mansour (2006); at y = 1 it is Conjecture 6.9 of Egge (2004). The proof
+  rewrites the Egge–Mansour weighted recurrence as a matrix Riccati identity
+  AW - x^2 y W^2 = I with A bidiagonal, evaluates the full-interval series as
+  p(1 - x) for an interpolation polynomial p through an unordered set of nodes,
+  and specializes through a localization that inverts only 1 - x^2 y c_i c_j.
+  The repository contains the manuscript, a Lean 4 / Mathlib formalization of
+  the whole theorem from the definitions of permutations, pattern containment,
+  involutions and the bivariate series (including Guibert's decomposition, the
+  containment lemmas and the Egge–Mansour weighted recurrence), and finite
+  computational checks (exact enumeration to length 22 for selected layered
+  patterns, exact symbolic identities for k <= 6). Theorem: proved and
+  machine-checked in Lean 4 from the definitions. Priority is not established.
+references:
+  - type: article
+    authors:
+      - family-names: Egge
+        given-names: Eric S.
+      - family-names: Mansour
+        given-names: Toufik
+    title: "Bivariate generating functions for involutions restricted by 3412"
+    journal: "Advances in Applied Mathematics"
+    volume: 36
+    issue: 2
+    start: 118
+    end: 137
+    year: 2006
+    doi: "10.1016/j.aam.2005.01.005"
+  - type: article
+    authors:
+      - family-names: Egge
+        given-names: Eric S.
+    title: "Restricted 3412-avoiding involutions, continued fractions, and Chebyshev polynomials"
+    journal: "Advances in Applied Mathematics"
+    volume: 33
+    issue: 3
+    start: 451
+    end: 475
+    year: 2004
+    doi: "10.1016/j.aam.2003.09.006"
+  - type: article
+    authors:
+      - family-names: Egge
+        given-names: Eric S.
+    title: "Restricted colored permutations and Chebyshev polynomials"
+    journal: "Discrete Mathematics"
+    volume: 307
+    issue: 14
+    start: 1792
+    end: 1800
+    year: 2007
+    doi: "10.1016/j.disc.2006.09.027"
+  - type: article
+    authors:
+      - family-names: Albert
+        given-names: Michael
+      - family-names: Bouvel
+        given-names: Mathilde
+    title: "A general theory of Wilf-equivalence for Catalan structures"
+    journal: "Electronic Journal of Combinatorics"
+    volume: 22
+    issue: 4
+    year: 2015
+    doi: "10.37236/5629"

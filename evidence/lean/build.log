@@ -1,0 +1,188 @@
+⚠ [11215/11762] Built EggeMansour.Centralizer (1.3s)
+warning: EggeMansour/Centralizer.lean: imports `Mathlib.LinearAlgebra.Matrix.Block` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [11216/11762] Ran EggeMansour.Centralizer:irArts
+warning: EggeMansour/Centralizer.lean: imports `Mathlib.LinearAlgebra.Matrix.Block` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [18134/18216] Built EggeMansour.Interfaces (3.2s)
+warning: EggeMansour/Interfaces.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [18135/18216] Ran EggeMansour.Interfaces:irArts
+warning: EggeMansour/Interfaces.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [18136/18216] Built EggeMansour.Bidiagonal (3.5s)
+warning: EggeMansour/Bidiagonal.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+⚠ [18137/18216] Ran EggeMansour.Bidiagonal:irArts
+warning: EggeMansour/Bidiagonal.lean: imports `Mathlib` from package `mathlib`, which is designed for use with the module system; consider adding `module` to the start of this file
+✔ [18138/18216] Built EggeMansour.Combinatorics (4.2s)
+✔ [18140/18216] Built EggeMansour.Recurrence (4.4s)
+✔ [18142/18216] Built EggeMansour.Generic (4.5s)
+✔ [18144/18216] Built EggeMansour.Localization (5.2s)
+✔ [18146/18216] Built EggeMansour.MatrixAdapter (5.5s)
+✔ [18148/18216] Built EggeMansour.CombinatoricsCounts (3.9s)
+✔ [18150/18216] Built EggeMansour.PermutationCast (3.9s)
+✔ [18152/18216] Built EggeMansour.CombinatorialTarget (4.1s)
+✔ [18154/18216] Built EggeMansour.Canonical (4.8s)
+✔ [18156/18216] Built EggeMansour.Guibert (5.8s)
+✔ [18158/18216] Built EggeMansour.GenericRecurrence (4.7s)
+✔ [18160/18216] Built EggeMansour.Wrap (4.7s)
+✔ [18162/18216] Built EggeMansour.Corollaries (4.7s)
+✔ [18164/18216] Built EggeMansour.DirectSumContainment (4.9s)
+⚠ [18166/18216] Built EggeMansour.WeightedSeries (4.9s)
+warning: EggeMansour/WeightedSeries.lean:62:39: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: EggeMansour/WeightedSeries.lean:241:12: This simp argument is unused:
+  castPerm_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+✔ [18168/18216] Built EggeMansour.ContainmentCut (5.4s)
+ℹ [18170/18216] Built EggeMansour.CombinatoricsChecks (5.5s)
+info: EggeMansour/CombinatoricsChecks.lean:25:0: [(0, [1]), (1, [1]), (2, [1, 1]), (3, [1, 3]), (4, [1, 6, 2]), (5, [1, 10, 10])]
+info: EggeMansour/CombinatoricsChecks.lean:28:0: [(0, [1]), (1, [1]), (2, [0, 1]), (3, [0, 1]), (4, [0, 0, 1]), (5, [0, 0, 1])]
+info: EggeMansour/CombinatoricsChecks.lean:31:0: [(0, [1]), (1, [1]), (2, [1, 0]), (3, [1, 0]), (4, [1, 0, 0]), (5, [1, 0, 0])]
+info: EggeMansour/CombinatoricsChecks.lean:34:0: 'EggeMansour.Combinatorics.coeff_coeff_avoiderSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:35:0: 'EggeMansour.Combinatorics.twoCycles_directSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:36:0: 'EggeMansour.Combinatorics.two_mul_twoCycles' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:37:0: 'EggeMansour.Combinatorics.twoCycles_le_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:38:0: 'EggeMansour.Combinatorics.contains_singleton_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/CombinatoricsChecks.lean:39:0: 'EggeMansour.Combinatorics.directSum_not_isIndecomposable' depends on axioms: [propext, Quot.sound]
+✔ [18172/18216] Built EggeMansour.Specialization (5.0s)
+ℹ [18174/18216] Built EggeMansour.WrapChecks (3.0s)
+info: EggeMansour/WrapChecks.lean:9:0: 'EggeMansour.Combinatorics.wrap_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:10:0: 'EggeMansour.Combinatorics.wrap_last' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:11:0: 'EggeMansour.Combinatorics.wrap_interior' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:12:0: 'EggeMansour.Combinatorics.isInvolution_wrap_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:13:0: 'EggeMansour.Combinatorics.wrap_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:14:0: 'EggeMansour.Combinatorics.contains_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:15:0: 'EggeMansour.Combinatorics.twoCycles_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/WrapChecks.lean:16:0: 'EggeMansour.Combinatorics.isIndecomposable_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [18176/18216] Built EggeMansour.WrapContainment (3.9s)
+✔ [18178/18216] Built EggeMansour.GuibertBijection (4.1s)
+✔ [18180/18216] Built EggeMansour.PatternSums (3.0s)
+✔ [18182/18216] Built EggeMansour.Main (3.0s)
+✔ [18184/18216] Built EggeMansour.Reduction (4.8s)
+✔ [18186/18216] Built EggeMansour.ConstructorSeries (3.9s)
+✔ [18188/18216] Built EggeMansour.ListContainment (4.1s)
+✔ [18190/18216] Built EggeMansour.WrappedSeries (4.4s)
+✔ [18192/18216] Built EggeMansour.GuibertPair (4.4s)
+✔ [18194/18216] Built EggeMansour.CombinatorialBridge (3.0s)
+✔ [18196/18216] Built EggeMansour.ReductionChecks (4.1s)
+✔ [18198/18216] Built EggeMansour.PrefixCells (3.6s)
+✔ [18200/18216] Built EggeMansour.ReductionSeries (3.5s)
+✔ [18202/18216] Built EggeMansour.CellSeries (3.2s)
+✔ [18204/18216] Built EggeMansour.AvoiderPartition (3.4s)
+✔ [18206/18216] Built EggeMansour.IntervalRecurrence (10s)
+✔ [18208/18216] Built EggeMansour.CombinatorialMain (3.2s)
+✔ [18210/18216] Built EggeMansour.FromDefinitions (3.2s)
+✔ [18212/18216] Built EggeMansour (3.1s)
+ℹ [18215/18216] Built EggeMansour.Audit (3.1s)
+info: EggeMansour/Audit.lean:9:0: 'EggeMansour.WeightedRecurrence.toUniform' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:10:0: 'EggeMansour.UniformRecurrence.eq_of_units' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:11:0: 'EggeMansour.UniformRecurrence.matrix_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:12:0: 'EggeMansour.UniformRecurrence.matrix_riccati' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:13:0: 'EggeMansour.UniformRecurrence.eq_interpolant' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:14:0: 'EggeMansour.UniformRecurrence.generic_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:15:0: 'EggeMansour.Universal.fieldNode_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:16:0: 'EggeMansour.Universal.uniform_symmetry_of_generic' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:17:0: 'EggeMansour.recurrenceImpliesSymmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:18:0: 'EggeMansour.weighted_recurrence_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:21:0: 'EggeMansour.Combinatorics.coeff_coeff_avoiderSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:22:0: 'EggeMansour.Combinatorics.two_mul_twoCycles' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:23:0: 'EggeMansour.Combinatorics.twoCycles_wrap' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:24:0: 'EggeMansour.Combinatorics.contains_directSum_iff_of_indecomposable' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: EggeMansour/Audit.lean:25:0: 'EggeMansour.Combinatorics.contains_directSum_sumPatterns_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: EggeMansour/Audit.lean:26:0: 'EggeMansour.Combinatorics.guibert_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:27:0: 'EggeMansour.Combinatorics.fixedFirstEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:28:0: 'EggeMansour.Combinatorics.pairedFirstEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:29:0: 'EggeMansour.Combinatorics.contains_wrap_directSum_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:30:0: 'EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+info: EggeMansour/Audit.lean:31:0: def EggeMansour.Combinatorics.DefinitionBasedSymmetry : Prop :=
+∀ (k : ℕ) (ρ : Equiv.Perm (Fin (k + 1))) (blocks : Fin (k + 1) → EggeMansour.Combinatorics.Pattern),
+  (∀ (i : Fin (k + 1)), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+    EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.sumPatterns (List.ofFn blocks)) =
+      EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.sumPatterns (List.ofFn (blocks ∘ ⇑ρ)))
+info: EggeMansour/Audit.lean:32:0: theorem EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence : ∀
+  (blockH : EggeMansour.Combinatorics.Pattern → EggeMansour.Series),
+  (∀ (k : ℕ) (blocks : Fin (k + 1) → EggeMansour.Combinatorics.Pattern),
+      (∀ (i : Fin (k + 1)), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) →
+        EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ
+          (fun i => EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+          (fun i => blockH (EggeMansour.Combinatorics.blockAt blocks i))
+          (fun i => (EggeMansour.Combinatorics.blockAt blocks i).fst == 1)
+          (EggeMansour.Combinatorics.intervalSeries blocks)) →
+    EggeMansour.Combinatorics.DefinitionBasedSymmetry :=
+fun blockH hRec k ρ blocks hblocks =>
+  have hF := hRec k blocks hblocks;
+  have hG := hRec k (blocks ∘ ⇑ρ) fun i => hblocks (ρ i);
+  have hc := EggeMansour.Combinatorics.blockParameter_reorder ρ blocks EggeMansour.Combinatorics.patternSeries;
+  have hh := EggeMansour.Combinatorics.blockParameter_reorder ρ blocks blockH;
+  have hs := EggeMansour.Combinatorics.blockParameter_reorder ρ blocks fun p => p.fst == 1;
+  have h :=
+    EggeMansour.weighted_recurrence_symmetry k ρ
+      (fun i => EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+      (fun i => blockH (EggeMansour.Combinatorics.blockAt blocks i))
+      (fun i => (EggeMansour.Combinatorics.blockAt blocks i).fst == 1) (EggeMansour.Combinatorics.intervalSeries blocks)
+      (EggeMansour.Combinatorics.intervalSeries (blocks ∘ ⇑ρ)) hF
+      (Eq.mp
+        (congrArg
+          (fun _a =>
+            EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ
+              (EggeMansour.permuteParams ρ fun i =>
+                EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+              (EggeMansour.permuteParams ρ fun i => blockH (EggeMansour.Combinatorics.blockAt blocks i)) _a
+              (EggeMansour.Combinatorics.intervalSeries (blocks ∘ ⇑ρ)))
+          hs)
+        (Eq.mp
+          (congrArg
+            (fun _a =>
+              EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ
+                (EggeMansour.permuteParams ρ fun i =>
+                  EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+                _a (fun i => (EggeMansour.Combinatorics.blockAt (blocks ∘ ⇑ρ) i).fst == 1)
+                (EggeMansour.Combinatorics.intervalSeries (blocks ∘ ⇑ρ)))
+            hh)
+          (Eq.mp
+            (congrArg
+              (fun _a =>
+                EggeMansour.WeightedRecurrence (k + 1) EggeMansour.seriesX EggeMansour.seriesQ _a
+                  (fun i => blockH (EggeMansour.Combinatorics.blockAt (blocks ∘ ⇑ρ) i))
+                  (fun i => (EggeMansour.Combinatorics.blockAt (blocks ∘ ⇑ρ) i).fst == 1)
+                  (EggeMansour.Combinatorics.intervalSeries (blocks ∘ ⇑ρ)))
+              hc)
+            hG)));
+  Eq.mp
+    (congr (congrArg Eq (EggeMansour.Combinatorics.intervalSeries_full k blocks))
+      (EggeMansour.Combinatorics.intervalSeries_full k (blocks ∘ ⇑ρ)))
+    h
+info: EggeMansour/Audit.lean:35:0: 'EggeMansour.Combinatorics.listWeightedIdentity' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:36:0: 'EggeMansour.Combinatorics.combinatorialWeightedRecurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:37:0: 'EggeMansour.Combinatorics.definitionBasedSymmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:38:0: 'EggeMansour.Combinatorics.wrappedSeries_eq_reducedSeries' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:39:0: 'EggeMansour.Combinatorics.reducedWeightedRecurrence' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:40:0: 'EggeMansour.Combinatorics.patternSeries_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:41:0: 'EggeMansour.Combinatorics.avoiderCount_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:42:0: 'EggeMansour.Combinatorics.layeredSeries_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:43:0: 'EggeMansour.Combinatorics.layeredCount_reorder' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: EggeMansour/Audit.lean:44:0: EggeMansour.Combinatorics.definitionBasedSymmetry : EggeMansour.Combinatorics.DefinitionBasedSymmetry
+info: EggeMansour/Audit.lean:45:0: EggeMansour.Combinatorics.reducedWeightedRecurrence {r : ℕ} (blocks : Fin r → EggeMansour.Combinatorics.Pattern)
+  (hblocks : ∀ (i : Fin r), EggeMansour.Combinatorics.IndecomposablePattern (blocks i)) :
+  EggeMansour.WeightedRecurrence r EggeMansour.seriesX EggeMansour.seriesQ
+    (fun i => EggeMansour.Combinatorics.patternSeries (EggeMansour.Combinatorics.blockAt blocks i))
+    (fun i =>
+      EggeMansour.Combinatorics.patternSeries
+        (EggeMansour.Combinatorics.reduce (EggeMansour.Combinatorics.blockAt blocks i)))
+    (fun i => (EggeMansour.Combinatorics.blockAt blocks i).fst == 1) (EggeMansour.Combinatorics.intervalSeries blocks)
+info: EggeMansour/Audit.lean:46:0: EggeMansour.Combinatorics.layeredCount_reorder {r : ℕ} (ρ : Equiv.Perm (Fin r)) (lengths : Fin r → ℕ)
+  (hpositive : ∀ (i : Fin r), 0 < lengths i) (n t : ℕ) :
+  EggeMansour.Combinatorics.avoiderCount (EggeMansour.Combinatorics.layeredPattern lengths).snd n t =
+    EggeMansour.Combinatorics.avoiderCount (EggeMansour.Combinatorics.layeredPattern (lengths ∘ ⇑ρ)).snd n t
+Build completed successfully (18216 jobs).

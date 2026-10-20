@@ -1,0 +1,37 @@
+# Lean / Lake build products
+lean/.lake/
+lean/build/
+lean/lake-packages/
+
+# Compiled C/C++ binaries and objects
+*.o
+*.out
+src/verification/literal
+literal-bin
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# LaTeX auxiliary files
+*.aux
+*.log.tmp
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Local reproduction outputs (write them outside data/ and evidence/)
+results/
+local/
+*.tmp
+
+# Editors and OS
+.DS_Store
+.vscode/
+.idea/
+*~

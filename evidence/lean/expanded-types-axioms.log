@@ -1,0 +1,40 @@
+PublicationAudit.generalSymmetry : ∀ (k : ℕ) (ρ : Equiv.Perm.{1} (Fin (HAdd.hAdd.{0, 0, 0} k 1)))
+  (blocks : Fin (HAdd.hAdd.{0, 0, 0} k 1) → Pattern),
+  (∀ (i : Fin (HAdd.hAdd.{0, 0, 0} k 1)), IsIndecomposable (Sigma.snd.{0, 0} (blocks i))) →
+    Eq.{1} (avoiderSeries (Sigma.snd.{0, 0} (sumPatterns (List.ofFn.{0} blocks))))
+      (avoiderSeries (Sigma.snd.{0, 0} (sumPatterns (List.ofFn.{0} (Function.comp.{1, 1, 1} blocks ⇑ρ)))))
+'PublicationAudit.generalSymmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+PublicationAudit.layeredSymmetry : ∀ (k : ℕ) (a : Fin k → ℕ),
+  (∀ (i : Fin k), 0 < a i) →
+    ∀ (ρ : Equiv.Perm (Fin k)),
+      avoiderSeries (sumPatterns (List.ofFn fun i => ⟨a i, Fin.revPerm⟩)).snd =
+        avoiderSeries (sumPatterns (List.ofFn fun i => ⟨a (ρ i), Fin.revPerm⟩)).snd
+'PublicationAudit.layeredSymmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+def EggeMansour.Combinatorics.DefinitionBasedSymmetry : Prop :=
+∀ (k : ℕ) (ρ : Equiv.Perm (Fin (k + 1))) (blocks : Fin (k + 1) → Pattern),
+  (∀ (i : Fin (k + 1)), IndecomposablePattern (blocks i)) →
+    patternSeries (sumPatterns (List.ofFn blocks)) = patternSeries (sumPatterns (List.ofFn (blocks ∘ ⇑ρ)))
+def EggeMansour.Combinatorics.IndecomposablePattern : Pattern → Prop :=
+fun p => IsIndecomposable p.snd
+def EggeMansour.Combinatorics.patternSeries : Pattern → EggeMansour.Series :=
+fun p => avoiderSeries p.snd
+def EggeMansour.Combinatorics.avoiderSeries : {k : ℕ} → Perm k → EggeMansour.Series :=
+fun {k} τ => PowerSeries.mk (avoiderPolynomial τ)
+def EggeMansour.Combinatorics.avoiderPolynomial : {k : ℕ} → Perm k → ℕ → Polynomial ℤ :=
+fun {k} τ n => ∑ σ, if IsAvoidingInvolution σ ∧ Avoids σ τ then Polynomial.X ^ twoCycles σ else 0
+def EggeMansour.Combinatorics.IsAvoidingInvolution : {n : ℕ} → Perm n → Prop :=
+fun {n} σ => IsInvolution σ ∧ Avoids σ pattern3412
+@contains_wrap_iff : ∀ {k n : ℕ} (u : Perm k) (τ : Perm n), Contains (wrap u) τ ↔ Contains u (reduce ⟨n, τ⟩).snd
+@reducedWeightedRecurrence : ∀ {r : ℕ} (blocks : Fin r → Pattern),
+  (∀ (i : Fin r), IndecomposablePattern (blocks i)) →
+    EggeMansour.WeightedRecurrence r EggeMansour.seriesX EggeMansour.seriesQ (fun i => patternSeries (blockAt blocks i))
+      (fun i => patternSeries (reduce (blockAt blocks i))) (fun i => (blockAt blocks i).fst == 1)
+      (intervalSeries blocks)
+@avoiderCount_reorder : ∀ {r : ℕ} (ρ : Equiv.Perm (Fin r)) (blocks : Fin r → Pattern),
+  (∀ (i : Fin r), IndecomposablePattern (blocks i)) →
+    ∀ (n t : ℕ),
+      avoiderCount (sumPatterns (List.ofFn blocks)).snd n t =
+        avoiderCount (sumPatterns (List.ofFn (blocks ∘ ⇑ρ))).snd n t
+@layeredCount_reorder : ∀ {r : ℕ} (ρ : Equiv.Perm (Fin r)) (lengths : Fin r → ℕ),
+  (∀ (i : Fin r), 0 < lengths i) →
+    ∀ (n t : ℕ), avoiderCount (layeredPattern lengths).snd n t = avoiderCount (layeredPattern (lengths ∘ ⇑ρ)).snd n t

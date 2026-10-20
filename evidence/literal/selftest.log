@@ -1,0 +1,12 @@
+control,0,1,1
+control,1,1,1
+control,2,2,2
+control,3,4,4
+control,4,10,9
+control,5,26,21
+control,6,76,51
+control,7,232,127
+control,8,764,323
+control,9,2620,835
+control,10,9496,2188
+SELFTEST PASS

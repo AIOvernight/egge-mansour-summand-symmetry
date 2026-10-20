@@ -1,0 +1,103 @@
+import EggeMansour.Audit
+import EggeMansour.AvoiderPartition
+import EggeMansour.Bidiagonal
+import EggeMansour.Canonical
+import EggeMansour.CellSeries
+import EggeMansour.Centralizer
+import EggeMansour.CombinatorialBridge
+import EggeMansour.CombinatorialMain
+import EggeMansour.CombinatorialTarget
+import EggeMansour.Combinatorics
+import EggeMansour.CombinatoricsChecks
+import EggeMansour.CombinatoricsCounts
+import EggeMansour.ConstructorSeries
+import EggeMansour.ContainmentCut
+import EggeMansour.Corollaries
+import EggeMansour.DirectSumContainment
+import EggeMansour.FromDefinitions
+import EggeMansour.Generic
+import EggeMansour.GenericRecurrence
+import EggeMansour.Guibert
+import EggeMansour.GuibertBijection
+import EggeMansour.GuibertPair
+import EggeMansour.Interfaces
+import EggeMansour.IntervalRecurrence
+import EggeMansour.ListContainment
+import EggeMansour.Localization
+import EggeMansour.Main
+import EggeMansour.MatrixAdapter
+import EggeMansour.PatternSums
+import EggeMansour.PermutationCast
+import EggeMansour.PrefixCells
+import EggeMansour.Recurrence
+import EggeMansour.Reduction
+import EggeMansour.ReductionChecks
+import EggeMansour.ReductionSeries
+import EggeMansour.Specialization
+import EggeMansour.WeightedSeries
+import EggeMansour.Wrap
+import EggeMansour.WrapChecks
+import EggeMansour.WrapContainment
+import EggeMansour.WrappedSeries
+import EggeMansour
+
+#check @EggeMansour.WeightedRecurrence.toUniform
+#print axioms EggeMansour.WeightedRecurrence.toUniform
+#check @EggeMansour.UniformRecurrence.eq_of_units
+#print axioms EggeMansour.UniformRecurrence.eq_of_units
+#check @EggeMansour.UniformRecurrence.matrix_identity
+#print axioms EggeMansour.UniformRecurrence.matrix_identity
+#check @EggeMansour.UniformRecurrence.matrix_riccati
+#print axioms EggeMansour.UniformRecurrence.matrix_riccati
+#check @EggeMansour.UniformRecurrence.eq_interpolant
+#print axioms EggeMansour.UniformRecurrence.eq_interpolant
+#check @EggeMansour.UniformRecurrence.generic_symmetry
+#print axioms EggeMansour.UniformRecurrence.generic_symmetry
+#check @EggeMansour.Universal.fieldNode_injective
+#print axioms EggeMansour.Universal.fieldNode_injective
+#check @EggeMansour.Universal.uniform_symmetry_of_generic
+#print axioms EggeMansour.Universal.uniform_symmetry_of_generic
+#check @EggeMansour.recurrenceImpliesSymmetry
+#print axioms EggeMansour.recurrenceImpliesSymmetry
+#check @EggeMansour.weighted_recurrence_symmetry
+#print axioms EggeMansour.weighted_recurrence_symmetry
+#check @EggeMansour.Combinatorics.coeff_coeff_avoiderSeries
+#print axioms EggeMansour.Combinatorics.coeff_coeff_avoiderSeries
+#check @EggeMansour.Combinatorics.two_mul_twoCycles
+#print axioms EggeMansour.Combinatorics.two_mul_twoCycles
+#check @EggeMansour.Combinatorics.twoCycles_wrap
+#print axioms EggeMansour.Combinatorics.twoCycles_wrap
+#check @EggeMansour.Combinatorics.contains_directSum_iff_of_indecomposable
+#print axioms EggeMansour.Combinatorics.contains_directSum_iff_of_indecomposable
+#check @EggeMansour.Combinatorics.contains_directSum_sumPatterns_iff
+#print axioms EggeMansour.Combinatorics.contains_directSum_sumPatterns_iff
+#check @EggeMansour.Combinatorics.guibert_split
+#print axioms EggeMansour.Combinatorics.guibert_split
+#check @EggeMansour.Combinatorics.fixedFirstEquiv
+#print axioms EggeMansour.Combinatorics.fixedFirstEquiv
+#check @EggeMansour.Combinatorics.pairedFirstEquiv
+#print axioms EggeMansour.Combinatorics.pairedFirstEquiv
+#check @EggeMansour.Combinatorics.contains_wrap_directSum_iff
+#print axioms EggeMansour.Combinatorics.contains_wrap_directSum_iff
+#check @EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence
+#print axioms EggeMansour.Combinatorics.definitionBasedSymmetry_of_weightedRecurrence
+#check @EggeMansour.Combinatorics.listWeightedIdentity
+#print axioms EggeMansour.Combinatorics.listWeightedIdentity
+#check @EggeMansour.Combinatorics.combinatorialWeightedRecurrence
+#print axioms EggeMansour.Combinatorics.combinatorialWeightedRecurrence
+#check @EggeMansour.Combinatorics.definitionBasedSymmetry
+#print axioms EggeMansour.Combinatorics.definitionBasedSymmetry
+#check @EggeMansour.Combinatorics.wrappedSeries_eq_reducedSeries
+#print axioms EggeMansour.Combinatorics.wrappedSeries_eq_reducedSeries
+#check @EggeMansour.Combinatorics.reducedWeightedRecurrence
+#print axioms EggeMansour.Combinatorics.reducedWeightedRecurrence
+#check @EggeMansour.Combinatorics.patternSeries_reorder
+#print axioms EggeMansour.Combinatorics.patternSeries_reorder
+#check @EggeMansour.Combinatorics.avoiderCount_reorder
+#print axioms EggeMansour.Combinatorics.avoiderCount_reorder
+#check @EggeMansour.Combinatorics.layeredSeries_reorder
+#print axioms EggeMansour.Combinatorics.layeredSeries_reorder
+#check @EggeMansour.Combinatorics.layeredCount_reorder
+#print axioms EggeMansour.Combinatorics.layeredCount_reorder
+#check @EggeMansour.Combinatorics.contains_wrap_iff
+#print axioms EggeMansour.Combinatorics.contains_wrap_iff

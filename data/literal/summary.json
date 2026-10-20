@@ -1,0 +1,292 @@
+{
+  "maxn_series": 22,
+  "files_checked": 3,
+  "coefficients_compared": 46206,
+  "distinct_vectors": 261,
+  "discrepancies": [],
+  "mutation_counterexample": {
+    "pattern": [
+      1,
+      1
+    ],
+    "n": 2,
+    "r": 0,
+    "observed": 0,
+    "mutated": 1
+  },
+  "seconds": 1.179861307144165,
+  "arithmetic": "Python arbitrary precision integers; sparse bivariate polynomials",
+  "hashes": {
+    "counts-G.csv": "9f8d19baacf079d6a0ccbd974da65992017a252d7185a4d6f61b99b445b71af6",
+    "counts-B.csv": "d55d35869fd8a79bebfc847b4a00fd80ee18f048728b691bbb190407a88161de",
+    "counts-A.csv": "8acb52fa6bc5539bc07c4e1cf81b2479c95718c2de1c9c920b4cb54e7e5fdbd4",
+    "counts.csv": "ea54221c3af7705e1cb8ad51544d9485af9abcc588521a127850b2c34393e603"
+  },
+  "domains": {
+    "A": {
+      "vectors": 255,
+      "max_n": 16,
+      "method": "explicit noncrossing partial matchings"
+    },
+    "G": {
+      "vectors": 255,
+      "max_n": 16,
+      "method": "all involutions; direct four-entry 3412 filter"
+    },
+    "B": {
+      "vectors": 34,
+      "max_n": 22,
+      "method": "explicit noncrossing partial matchings"
+    }
+  },
+  "generator_comparison": "A == G for every coefficient",
+  "timings": {
+    "A": [
+      {
+        "n": 0,
+        "seconds": 0.00778316
+      },
+      {
+        "n": 1,
+        "seconds": 0.00673178
+      },
+      {
+        "n": 2,
+        "seconds": 0.00694556
+      },
+      {
+        "n": 3,
+        "seconds": 0.00686998
+      },
+      {
+        "n": 4,
+        "seconds": 0.00723482
+      },
+      {
+        "n": 5,
+        "seconds": 0.00685224
+      },
+      {
+        "n": 6,
+        "seconds": 0.00711209
+      },
+      {
+        "n": 7,
+        "seconds": 0.00692856
+      },
+      {
+        "n": 8,
+        "seconds": 0.00817445
+      },
+      {
+        "n": 9,
+        "seconds": 0.0194339
+      },
+      {
+        "n": 10,
+        "seconds": 0.018853
+      },
+      {
+        "n": 11,
+        "seconds": 0.0260844
+      },
+      {
+        "n": 12,
+        "seconds": 0.0395114
+      },
+      {
+        "n": 13,
+        "seconds": 0.065906
+      },
+      {
+        "n": 14,
+        "seconds": 0.141675
+      },
+      {
+        "n": 15,
+        "seconds": 0.397751
+      },
+      {
+        "n": 16,
+        "seconds": 1.03146
+      }
+    ],
+    "B": [
+      {
+        "n": 0,
+        "seconds": 0.00727638
+      },
+      {
+        "n": 1,
+        "seconds": 0.00690575
+      },
+      {
+        "n": 2,
+        "seconds": 0.00694497
+      },
+      {
+        "n": 3,
+        "seconds": 0.00712878
+      },
+      {
+        "n": 4,
+        "seconds": 0.0045184
+      },
+      {
+        "n": 5,
+        "seconds": 0.0108565
+      },
+      {
+        "n": 6,
+        "seconds": 0.00377354
+      },
+      {
+        "n": 7,
+        "seconds": 0.00717773
+      },
+      {
+        "n": 8,
+        "seconds": 0.00648948
+      },
+      {
+        "n": 9,
+        "seconds": 0.00722085
+      },
+      {
+        "n": 10,
+        "seconds": 0.00733349
+      },
+      {
+        "n": 11,
+        "seconds": 0.00845769
+      },
+      {
+        "n": 12,
+        "seconds": 0.0120012
+      },
+      {
+        "n": 13,
+        "seconds": 0.0132442
+      },
+      {
+        "n": 14,
+        "seconds": 0.0217986
+      },
+      {
+        "n": 15,
+        "seconds": 0.0556094
+      },
+      {
+        "n": 16,
+        "seconds": 0.14347
+      },
+      {
+        "n": 17,
+        "seconds": 0.405154
+      },
+      {
+        "n": 18,
+        "seconds": 1.05278
+      },
+      {
+        "n": 19,
+        "seconds": 2.93156
+      },
+      {
+        "n": 20,
+        "seconds": 8.29105
+      },
+      {
+        "n": 21,
+        "seconds": 23.5225
+      },
+      {
+        "n": 22,
+        "seconds": 67.8918
+      }
+    ],
+    "G": [
+      {
+        "n": 0,
+        "seconds": 0.00904936
+      },
+      {
+        "n": 1,
+        "seconds": 0.0081185
+      },
+      {
+        "n": 2,
+        "seconds": 0.00741135
+      },
+      {
+        "n": 3,
+        "seconds": 0.00799374
+      },
+      {
+        "n": 4,
+        "seconds": 0.0109402
+      },
+      {
+        "n": 5,
+        "seconds": 0.00397772
+      },
+      {
+        "n": 6,
+        "seconds": 0.00726735
+      },
+      {
+        "n": 7,
+        "seconds": 0.00751672
+      },
+      {
+        "n": 8,
+        "seconds": 0.00740758
+      },
+      {
+        "n": 9,
+        "seconds": 0.00790291
+      },
+      {
+        "n": 10,
+        "seconds": 0.0159164
+      },
+      {
+        "n": 11,
+        "seconds": 0.0297126
+      },
+      {
+        "n": 12,
+        "seconds": 0.073051
+      },
+      {
+        "n": 13,
+        "seconds": 0.210838
+      },
+      {
+        "n": 14,
+        "seconds": 0.593115
+      },
+      {
+        "n": 15,
+        "seconds": 1.93682
+      },
+      {
+        "n": 16,
+        "seconds": 6.23569
+      }
+    ]
+  },
+  "source_hashes": {
+    "requirements-algebra.txt": "4cef508304e84c21f73cf412712165dc26e40978cb784bc08a876948b559d90d",
+    "literal.cpp": "54f903c76db3029633004c7d55e43feeb64dc7db634d58ca0ba8d471406a9353",
+    "check_series.py": "ea58bca6fb5f314e43f630ffe585b51d32e8c12e15c20136b7b3bb32000b488f",
+    "run.sh": "6c1f2a3579c2562f15be6bef6c43a0b305650ff055228c64b3daa8e8b8f2f5a1",
+    "algebra_flint.py": "9c54bed53a5a054954dd5c97958152ad6dff96dc600eb002f35a6338eeb49663"
+  },
+  "generic_detector_control": {
+    "max_n": 10,
+    "vectors": 261,
+    "status": "PASS",
+    "objects": "all general involutions, filtered by direct 3412 comparisons"
+  }
+}
